@@ -28,7 +28,7 @@ export const homeObj2 = {
   lightText: false,
   lightTextDesc: false,
   topLine: "",
-  headline: "BUT HOW DO WE DO IT?.",
+  headline: "AND HOW DO WE DO THAT?.",
   description:
     "Glad you asked, we collect data from social medias, and we treat it 'by magic!', to give crucial information in your success journey.",
   buttonLable: "",

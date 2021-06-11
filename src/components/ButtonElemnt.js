@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 export const Button = styled.div`
   border-radius: 50px;
-  background: ${({ primary }) => (primary ? "#fff" : "#48426d")};
+  background: ${({ primary }) => (primary ? "#fff" : "#096192")};
   white-space: nowrap;
   padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
-  color: ${({ dark }) => (dark ? "#48426d" : "#fff")};
+  color: ${({ dark }) => (dark ? "#096192" : "#fff")};
   font-size: ${({ fontBig }) => (fontBig ? "20px" : "16px")};
   outline: none;
   border: none;
@@ -19,7 +19,7 @@ export const Button = styled.div`
   margin-left: 15px;
   &:hover {
     transition: all 0.1s ease-in-out;
-    background: ${({ primary }) => (primary ? "#fff" : "#48426d")};
-    color: ${({ dark }) => (dark ? "#fff" : "#48426d")};
+    background: ${({ primary }) => (primary ? "#fff" : "#096192")};
+    color: ${({ dark }) => (dark ? "#fff" : "#096192")};
   }
 `;

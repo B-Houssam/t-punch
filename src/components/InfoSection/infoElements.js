@@ -7,7 +7,7 @@ export const InfoContainer = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
-  background: ${({ lightBg }) => (lightBg ? "#fff" : "#48426d")};
+  background: ${({ lightBg }) => (lightBg ? "#fff" : "#096192")};
   @media screen and (maw-width: 830px) {
     padding: 100px 0;
   }
@@ -61,7 +61,7 @@ export const TextWrapper = styled.div`
 
 export const TopLine = styled.p`
   display: ${({ displayed }) => (displayed ? "none" : "block")};
-  color: #48426d;
+  color: #096192;
   font-size: 21px;
   font-weight: 700;
   line-height: 16px;
@@ -87,7 +87,7 @@ export const Heading = styled.h1`
 
 export const Sub = styled.p`
   max-width: 440px;
-  color: ${({ darkText }) => (darkText ? "#48426d" : "#fff")};
+  color: ${({ darkText }) => (darkText ? "#096192" : "#fff")};
   font-size: 18px;
   line-height: 24px;
   margin-bottom: 35px;

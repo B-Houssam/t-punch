@@ -3,3 +3,11 @@
   margin: 0;
   padding: 0;
 }
+
+.active {
+  border-bottom: 3px solid #096192;
+}
+
+.footer {
+  font-family: "Open Sans", sans-serif;
+}

@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import InfoSection from "../components/InfoSection";
 import Services from "../components/whySection";
 import { homeObj, homeObj2 } from "../components/InfoSection/Data";
+import Ftr from "../components/Footer";
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,6 +21,7 @@ const Home = () => {
       <InfoSection {...homeObj}></InfoSection>
       <Services></Services>
       <InfoSection {...homeObj2}></InfoSection>
+      <Ftr></Ftr>
     </>
   );
 };
