@@ -43,8 +43,9 @@ export const NavLogo = styled(LinkR)`
   text-decoration: none;
   font-size: 2rem;
   font-family: "Oswald", sans-serif;
-  @media screen and (max-width: 1050px) {
-    font-size: 1.3rem;
+  @media screen and (max-width: 1150px) {
+    font-size: 1.5rem;
+    padding-right: 20px;
   }
 `;
 
@@ -98,7 +99,7 @@ export const NavContact = styled(LinkS)`
   font-family: "Open Sans", sans-serif;
 
   &.active {
-    border-bottom: 3px solid #01bf71;
+    border-bottom: 3px solid #096192;
   }
   @media screen and (max-width: 1050px) {
     display: none;
@@ -115,6 +116,9 @@ export const NavLinks = styled(LinkS)`
   cursor: pointer;
   font-size: 1rem;
   font-family: "Open Sans", sans-serif;
+  @media screen and (max-width: 1150px) {
+    font-size: 0.9rem;
+  }
 `;
 
 export const NavBtn = styled.nav`

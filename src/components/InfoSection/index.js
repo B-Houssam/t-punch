@@ -45,7 +45,7 @@ const InfoSection = ({
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Sub darkText={darkText}>{description}</Sub>
                 <BtnWrap btn={btn}>
-                  <Button>{buttonLable}</Button>
+                  <Button to="/signin">{buttonLable}</Button>
                 </BtnWrap>
               </TextWrapper>
             </Column1>

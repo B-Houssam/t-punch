@@ -18,8 +18,8 @@ export const Button = styled.div`
   font-family: "Open Sans", sans-serif;
   margin-left: 15px;
   &:hover {
-    transition: all 0.1s ease-in-out;
-    background: ${({ primary }) => (primary ? "#fff" : "#096192")};
-    color: ${({ dark }) => (dark ? "#fff" : "#096192")};
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    color: #096192;
   }
 `;
