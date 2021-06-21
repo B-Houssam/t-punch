@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Container,
   FormWrap,
@@ -13,7 +14,6 @@ import {
   Txt,
   OutWrap,
 } from "./SigninElements";
-import img from "../../images/svg-7.svg";
 
 const SignIn = () => {
   return (
@@ -21,8 +21,9 @@ const SignIn = () => {
       <Container>
         <FormWrap>
           <Icon to="/">TECH_PUNCH</Icon>
+
           <OutWrap>
-            <Txt>GET BACK TO THE BUSINESS</Txt>
+            <Txt>GET BACK TO YOUR BUSINESS</Txt>
             <FormContent>
               <Form action="#">
                 <FormH1>SIGN IN TO YOUR ACCOUNT</FormH1>
@@ -30,7 +31,9 @@ const SignIn = () => {
                 <FormInput type="email" required></FormInput>
                 <FormLabel htmlFor="for">PASSWORD</FormLabel>
                 <FormInput type="password" required></FormInput>
-                <FormButton type="submit">CONTINUE</FormButton>
+                <FormButton type="submit" to="/dashboard">
+                  CONTINUE
+                </FormButton>
                 <Text>FORGOT PASSWORD</Text>
               </Form>
             </FormContent>

@@ -27,6 +27,7 @@ export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   z-index: 1;
+
   @media screen and (max-width: 1050px) {
     max-width: 100%;
     padding-right: 20;
@@ -43,6 +44,7 @@ export const NavLogo = styled(LinkR)`
   text-decoration: none;
   font-size: 2rem;
   font-family: "Oswald", sans-serif;
+
   @media screen and (max-width: 1150px) {
     font-size: 1.5rem;
     padding-right: 20px;
@@ -154,12 +156,5 @@ export const NavBtnLink = styled(LinkR)`
     transition: all 0.2s ease-in-out;
     background: #fff;
     color: #096192;
-  }
-  @media screen and (max-width: 1050px) {
-    display: none;
-  }
-
-  &.active {
-    border-bottom: 3px solid #096192;
   }
 `;

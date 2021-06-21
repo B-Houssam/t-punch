@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export const Container = styled.div`
   min-height: 692px;
@@ -10,17 +10,9 @@ export const Container = styled.div`
   top: 0;
   z-index: 0;
   overflow: hidden;
-  background: #fff;
+  background: #096192;
 `;
-/*
-export const Img = styled.img`
-  @media screen and (max-width: 1050px) {
-    display: none;
-  }
-  width: 350px;
-  height: 350px;
-`;
-*/
+
 export const OutWrap = styled.div`
   display: flex;
   flex-direction: row;
@@ -63,7 +55,7 @@ export const Icon = styled(Link)`
   margin-left: 32px;
   text-decoration: none;
   font-weight: bold;
-  color: #096192;
+  color: #fff;
   font-family: "Oswald", sans-serif;
   font-size: 32px;
   @media screen and (max-width: 480px) {

@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { Link as LinkR } from "react-router-dom";
 //import { Link as LinkS } from "react-scroll";
 
-export const Button = styled.div`
+export const Button = styled(LinkR)`
   border-radius: 50px;
   background: ${({ primary }) => (primary ? "#fff" : "#096192")};
   white-space: nowrap;
@@ -12,6 +13,7 @@ export const Button = styled.div`
   border: none;
   cursor: pointer;
   display: flex;
+  text-decoration: none;
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
