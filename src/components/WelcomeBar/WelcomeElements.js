@@ -13,6 +13,7 @@ export const WelcomeBarWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
 export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,8 +38,8 @@ export const WelcomeContent = styled.div`
 `;
 
 export const Circle = styled.div`
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 40px;
   background: #f3f4ed;
   border-radius: 50px;
   margin-left: 10px;

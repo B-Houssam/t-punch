@@ -18,9 +18,3 @@ export const DashboardContainer = styled.div`
 export const TopBarContainer = styled.div`
   width: 100%;
 `;
-
-export const Rest = styled.div`
-  width: 100%;
-  height: 1000px;
-  background: #f3f4ed;
-`;

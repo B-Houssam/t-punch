@@ -9,10 +9,12 @@ import {
   Menu,
   TextWrapper,
   WelcomeSubText,
+  Number,
 } from "./WelcomeElements";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiMessageSquareDetail } from "react-icons/bi";
-import { IoMdNotifications } from "react-icons/io";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import Badge from "@material-ui/core/Badge";
 
 const WelcomeBarD = () => {
   return (
@@ -25,17 +27,23 @@ const WelcomeBarD = () => {
               Here are your informations for today
             </WelcomeSubText>
           </TextWrapper>
-
           <WelcomeContent>
             <Circle>
-              <AiOutlineSearch></AiOutlineSearch>
+              <AiOutlineSearch size="20px"></AiOutlineSearch>
             </Circle>
-            <Circle>
-              <BiMessageSquareDetail></BiMessageSquareDetail>
-            </Circle>
-            <Circle>
-              <IoMdNotifications></IoMdNotifications>
-            </Circle>
+
+            <Badge badgeContent={0} color="primary" showZero>
+              <Circle>
+                <BiMessageSquareDetail size="20px"></BiMessageSquareDetail>
+              </Circle>
+            </Badge>
+
+            <Badge badgeContent={0} color="primary" showZero>
+              <Circle>
+                <IoMdNotificationsOutline size="20px"></IoMdNotificationsOutline>
+              </Circle>
+            </Badge>
+
             <Line></Line>
             <Menu></Menu>
           </WelcomeContent>

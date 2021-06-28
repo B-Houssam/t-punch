@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link as LinkR } from "react-router-dom";
 
 export const Logo = styled.h1`
   font-family: "Oswald", sans-serif;
@@ -8,7 +9,34 @@ export const Logo = styled.h1`
   font-size: 18px;
   font-weight: bold;
   text-align: center;
-  //text-shadow: 3px 3px #053742;
+  //text-shadow: 2px 2px 1px #000;
+`;
+
+export const SideBarAdd = styled(LinkR)`
+  border-radius: 50px;
+  background: #fff;
+  color: #096192;
+  white-space: nowrap;
+  font-size: 15px;
+  width: 100%;
+  height: 50px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  text-decoration: none;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 30px;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #053742;
+    color: #fff;
+  }
 `;
 
 export const UpperLogo = styled.img`

@@ -1,11 +1,11 @@
 import React from "react";
 import SideBarDD from "../SideBarD";
+import AddData from "../AddData";
 import WelcomeBarD from "../WelcomeBar";
 import {
   SideBarContainer,
   ContentContainer,
   DashboardContainer,
-  Rest,
 } from "./DashElements";
 
 const Dash = () => {
@@ -17,7 +17,7 @@ const Dash = () => {
         </SideBarContainer>
         <ContentContainer>
           <WelcomeBarD></WelcomeBarD>
-          <Rest></Rest>
+          <AddData></AddData>
         </ContentContainer>
       </DashboardContainer>
     </>
