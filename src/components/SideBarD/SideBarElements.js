@@ -12,6 +12,7 @@ export const Logo = styled.h1`
   //text-shadow: 2px 2px 1px #000;
 `;
 
+/*
 export const SideBarAdd = styled(LinkR)`
   border-radius: 50px;
   background: #fff;
@@ -38,6 +39,7 @@ export const SideBarAdd = styled(LinkR)`
     color: #fff;
   }
 `;
+*/
 
 export const UpperLogo = styled.img`
   width: 50px;
@@ -68,14 +70,16 @@ export const SideBarTitle = styled.div`
   font-size: 18px;
   color: #dcdcdc;
 `;
+
 export const SideBarList = styled.ul`
   list-style: none;
 `;
-export const SideBarListItem = styled.li`
+export const SideBarListItem = styled(LinkR)`
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   color: #fff;
   cursor: pointer;
+  text-decoration: none;
   display: flex;
   justify-content: space-between;
   flex-direction: center;

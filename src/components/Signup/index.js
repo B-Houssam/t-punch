@@ -25,7 +25,7 @@ const SignUp = () => {
             <Txt>START BOOSTING YOUR BUSINESS</Txt>
             <Img src={img}></Img>
             <FormContent>
-              <Form action="/dashboard">
+              <Form action="/dashboard/main">
                 <FormH1>CREATE YOUR NEW ACCOUNT</FormH1>
                 <FormLabel htmlFor="for">EMAIL</FormLabel>
                 <FormInput type="email" required></FormInput>

@@ -8,16 +8,17 @@ import {
   SideBarList,
   Logo,
   UpperLogo,
-  SideBarAdd,
 } from "./SideBarElements.js";
 import {
   AiOutlineDashboard,
   AiOutlineSetting,
   AiFillFolderAdd,
+  AiOutlineDatabase,
 } from "react-icons/ai";
 
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { RiAccountCircleLine } from "react-icons/ri";
+
 import img from "../../images/svg-9.svg";
 
 const SideBarDD = () => {
@@ -28,24 +29,24 @@ const SideBarDD = () => {
           <SideBarMenu>
             <UpperLogo src={img} alt="profilPic"></UpperLogo>
             <SideBarTitle>DATA</SideBarTitle>
-            <SideBarAdd>
-              Import data file
-              <AiFillFolderAdd size="30px"></AiFillFolderAdd>
-            </SideBarAdd>
+            <SideBarListItem to="/dashboard/datasets">
+              DATASETS
+              <AiOutlineDatabase />
+            </SideBarListItem>
             <SideBarTitle>PAGES</SideBarTitle>
             <SideBarList>
-              <SideBarListItem>
+              <SideBarListItem to="/dashboard/main">
                 DASHBOARD
                 <AiOutlineDashboard />
               </SideBarListItem>
-              <SideBarListItem>
+              <SideBarListItem to="/dashboard/settings">
                 SETTINGS <AiOutlineSetting />
               </SideBarListItem>
-              <SideBarListItem>
+              <SideBarListItem to="/dashboard/messages">
                 MESSAGES
                 <BiMessageSquareDetail />
               </SideBarListItem>
-              <SideBarListItem>
+              <SideBarListItem to="/dashboard/account">
                 ACCOUNT
                 <RiAccountCircleLine />
               </SideBarListItem>

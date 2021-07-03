@@ -9,23 +9,20 @@ import {
   Menu,
   TextWrapper,
   WelcomeSubText,
-  Number,
 } from "./WelcomeElements";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import Badge from "@material-ui/core/Badge";
 
-const WelcomeBarD = () => {
+const WelcomeBarD = ({ path }) => {
   return (
     <>
       <WelcomeBar>
         <WelcomeBarWrapper>
           <TextWrapper>
             <WelcomeText>WELCOME BACK ACME INC. 👋</WelcomeText>
-            <WelcomeSubText>
-              Here are your informations for today
-            </WelcomeSubText>
+            <WelcomeSubText>{path}</WelcomeSubText>
           </TextWrapper>
           <WelcomeContent>
             <Circle>

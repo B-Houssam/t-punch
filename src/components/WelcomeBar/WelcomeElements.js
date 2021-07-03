@@ -26,9 +26,10 @@ export const WelcomeText = styled.h1`
   color: #096192;
 `;
 export const WelcomeSubText = styled.p`
-  font-size: 18;
-  font-family: "Open Sans", sans-serif;
+  //font-size: 21;
+  //font-family: "Open Sans", sans-serif;
   color: #096192;
+  font-family: "Oswald", sans-serif;
 `;
 export const WelcomeContent = styled.div`
   height: 100%;
