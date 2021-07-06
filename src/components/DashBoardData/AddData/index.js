@@ -1,14 +1,13 @@
-import { React, useState } from "react";
+import React from "react";
+import { useState } from "react";
 import img from "../../../images/svg-10.svg";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import { makeStyles } from "@material-ui/core/styles";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import axios from "axios";
 
 import {
   AddWrapper,
@@ -16,17 +15,26 @@ import {
   AddImage,
   AddBtnWrapper,
   AddBtn,
+  AddBtnT,
   AddTxt,
+  AddTxtT,
   TableWrapper,
   OptWrapper,
   Del,
   Mark,
+  SelectedWrapper,
+  TxtWrapper,
 } from "./AddElements";
 import { AiFillFolderAdd, AiFillDelete } from "react-icons/ai";
 import { ImCheckmark } from "react-icons/im";
+import { FiUpload } from "react-icons/fi";
+import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddData = () => {
-  const [file, setfile] = useState(false);
+  const [file, setfile] = useState(true);
+  const [selected, setselected] = useState(null);
+  const [show, setshow] = useState(false);
 
   const theme = createMuiTheme({
     typography: {
@@ -48,6 +56,37 @@ const AddData = () => {
     ),
   ];
 
+  const hiddenFileInput = React.useRef(null);
+
+  const handleClick = (event) => {
+    hiddenFileInput.current.click();
+  };
+
+  const handleAction = async (data) => {
+    const formData = new FormData();
+    formData.append("file", selected);
+    const res = await fetch("http://localhost:8000/public", {
+      method: "POST",
+      body: formData,
+    }).then((res) => res.json());
+    toast.info("Upload succesful!", {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+    setfile(false);
+    setshow(false);
+  };
+
+  const handleChange = (event) => {
+    setselected(event.target.files[0]);
+    setshow(true);
+  };
+
   return (
     <>
       {file ? (
@@ -56,11 +95,34 @@ const AddData = () => {
             <AddTxt>
               Upload a new dataset, or select one as your primary.
             </AddTxt>
-            <AddBtn>
-              Upload Data
-              <AiFillFolderAdd></AiFillFolderAdd>
+            <AddBtn onClick={handleClick}>
+              Select file
+              <AiFillFolderAdd size="25px"></AiFillFolderAdd>
             </AddBtn>
+            <input
+              type="file"
+              name="file"
+              style={{ display: "none" }}
+              ref={hiddenFileInput}
+              onChange={handleChange}
+            />
           </AddBtnWrapper>
+          {show === false ? (
+            <></>
+          ) : (
+            <SelectedWrapper>
+              <TxtWrapper>
+                <AddTxtT style={{ "font-weight": "bold" }}>
+                  Selected file:
+                </AddTxtT>
+                <AddTxtT>{selected.name}</AddTxtT>
+              </TxtWrapper>
+              <AddBtnT onClick={handleAction}>
+                Upload
+                <FiUpload size="20px"></FiUpload>
+              </AddBtnT>
+            </SelectedWrapper>
+          )}
           <AddImage src={img} alt="noyet"></AddImage>
           <AddText>No data imported yet !</AddText>
         </AddWrapper>
@@ -70,11 +132,34 @@ const AddData = () => {
             <AddTxt>
               Upload a new dataset, or select one as your primary.
             </AddTxt>
-            <AddBtn>
-              Upload Data
-              <AiFillFolderAdd size="20px"></AiFillFolderAdd>
+            <AddBtn onClick={handleClick}>
+              Select file
+              <AiFillFolderAdd size="25px"></AiFillFolderAdd>
             </AddBtn>
+            <input
+              type="file"
+              name="file"
+              style={{ display: "none" }}
+              ref={hiddenFileInput}
+              onChange={handleChange}
+            />
           </AddBtnWrapper>
+          {show === false ? (
+            <></>
+          ) : (
+            <SelectedWrapper>
+              <TxtWrapper>
+                <AddTxtT style={{ "font-weight": "bold" }}>
+                  Selected file:
+                </AddTxtT>
+                <AddTxtT>{selected.name}</AddTxtT>
+              </TxtWrapper>
+              <AddBtnT onClick={handleAction}>
+                Upload
+                <FiUpload size="20px"></FiUpload>
+              </AddBtnT>
+            </SelectedWrapper>
+          )}
           <ThemeProvider theme={theme}>
             <TableWrapper>
               <Table aria-label="datasets table">
@@ -134,6 +219,19 @@ const AddData = () => {
           </ThemeProvider>
         </AddWrapper>
       )}
+      <ToastContainer
+        toastStyle={{ backgroundColor: "#096192" }}
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover={false}
+        transition={Slide}
+      />
     </>
   );
 };

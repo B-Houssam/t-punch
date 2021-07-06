@@ -12,7 +12,6 @@ import {
 import {
   AiOutlineDashboard,
   AiOutlineSetting,
-  AiFillFolderAdd,
   AiOutlineDatabase,
 } from "react-icons/ai";
 

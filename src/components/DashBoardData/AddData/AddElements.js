@@ -15,11 +15,23 @@ export const AddWrapper = styled.div`
 export const AddBtnWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 100px;
+  padding: 50px;
   align-items: center;
   width: 100%;
   height: 100px;
   background: #f3f4ed;
+`;
+
+export const SelectedWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 50px;
+  align-items: center;
+  width: 80%;
+  height: 80px;
+  background: #096192;
 `;
 
 export const AddTxt = styled.p`
@@ -31,12 +43,30 @@ export const AddTxt = styled.p`
   text-align: center;
 `;
 
+export const AddTxtT = styled.p`
+  //font-family: "Oswald", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  color: #fff;
+  font-size: 16px;
+  //font-weight: bold;
+  text-align: center;
+`;
+
+export const TxtWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  //padding-left: 20px;
+  //padding-right: 20px;
+  align-items: flex-start;
+`;
+
 export const AddBtn = styled(LinkR)`
   border-radius: 50px;
   background: #096192;
   color: #fff;
   white-space: nowrap;
-  font-size: 15px;
+  font-size: 16px;
   width: 200px;
   height: 50px;
   outline: none;
@@ -50,7 +80,33 @@ export const AddBtn = styled(LinkR)`
   align-items: center;
   transition: all 0.2s ease-in-out;
   font-family: "Open Sans", sans-serif;
-  margin-bottom: 30px;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #053742;
+    color: #fff;
+  }
+`;
+
+export const AddBtnT = styled(LinkR)`
+  //border-radius: 50px;
+  background: #fff;
+  color: #096192;
+  white-space: nowrap;
+  font-size: 16px;
+  width: 200px;
+  height: 50px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  text-decoration: none;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  font-family: "Open Sans", sans-serif;
+
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #053742;
