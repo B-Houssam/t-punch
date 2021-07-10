@@ -4,6 +4,7 @@ import SigninPage from "./pages/signin";
 import SignupPage from "./pages/signup";
 import DashMain from "./pages/dashmain";
 import DashD from "./pages/dashdata";
+import DashA from "./pages/dashaccount";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" component={SignupPage} exact />
         <Route path="/dashboard/main" component={DashMain} exact />
         <Route path="/dashboard/datasets" component={DashD} exact />
+        <Route path="/dashboard/account" component={DashA} exact />
       </Switch>
     </Router>
   );
