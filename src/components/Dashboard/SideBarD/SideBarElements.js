@@ -86,6 +86,7 @@ export const SideBarListItem = styled(LinkR)`
   align-items: center;
   margin-bottom: 5px;
   padding: 10px;
+  //background: ${({ lightBg }) => (lightBg ? "#096192" : "#053742")};
   &:hover,
   &.active {
     background: #053742;

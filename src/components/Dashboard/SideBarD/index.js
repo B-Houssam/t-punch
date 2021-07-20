@@ -20,7 +20,7 @@ import { RiAccountCircleLine } from "react-icons/ri";
 
 import img from "../../../images/svg-9.svg";
 
-const SideBarDD = () => {
+const SideBarDD = ({ lightBg }) => {
   return (
     <>
       <SideBar>
