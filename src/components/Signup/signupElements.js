@@ -14,7 +14,6 @@ export const Container = styled.div`
   background: #096192;
 `;
 
-/*
 export const Text = styled.span`
   text-align: center;
   margin-top: 24px;
@@ -22,7 +21,6 @@ export const Text = styled.span`
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
 `;
-*/
 
 export const Img = styled.img`
   @media screen and (max-width: 1050px) {

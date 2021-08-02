@@ -13,6 +13,7 @@ import {
   FormLabel,
   Txt,
   OutWrap,
+  Text,
 } from "./signupElements";
 
 const SignUp = () => {
@@ -26,14 +27,13 @@ const SignUp = () => {
             <Img src={img}></Img>
             <FormContent>
               <Form action="/dashboard/main">
-                <FormH1>CREATE YOUR NEW ACCOUNT</FormH1>
-                <FormLabel htmlFor="for">EMAIL</FormLabel>
-                <FormInput type="email" required></FormInput>
+                <FormH1>SIGN IN TO YOUR ACCOUNT</FormH1>
+                <FormLabel htmlFor="for">KEY</FormLabel>
+                <FormInput type="text" required></FormInput>
                 <FormLabel htmlFor="for">PASSWORD</FormLabel>
                 <FormInput type="password" required></FormInput>
-                <FormLabel htmlFor="for">CONFIRME PASSWORD</FormLabel>
-                <FormInput type="password" required></FormInput>
                 <FormButton type="submit">CONTINUE</FormButton>
+                <Text>FORGOT PASSWORD</Text>
               </Form>
             </FormContent>
           </OutWrap>
