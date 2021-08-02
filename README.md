@@ -8,6 +8,7 @@ In the project directory, you can run:
 
 ###  `yarn dev`
 
+install nodemon befor running the script !
 Runs server.js and main app in development mode.
 
 ### `yarn start`
