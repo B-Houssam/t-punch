@@ -6,6 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+###  `yarn dev`
+
+install nodemon befor running the script !
+Runs server.js and main app in development mode.
+
 ### `yarn start`
 
 Runs the app in the development mode.\
