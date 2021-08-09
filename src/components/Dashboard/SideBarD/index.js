@@ -17,6 +17,7 @@ import {
 
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { RiAccountCircleLine } from "react-icons/ri";
+import { BsClipboardData } from "react-icons/bs";
 
 import img from "../../../images/svg-9.svg";
 
@@ -31,6 +32,10 @@ const SideBarDD = ({ lightBg }) => {
             <SideBarListItem to="/dashboard/datasets">
               DATASET
               <AiOutlineDatabase />
+            </SideBarListItem>
+            <SideBarListItem to="/dashboard/explore">
+              EXPLORE
+              <BsClipboardData />
             </SideBarListItem>
             <SideBarTitle>PAGES</SideBarTitle>
             <SideBarList>
