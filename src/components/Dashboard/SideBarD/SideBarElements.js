@@ -51,9 +51,10 @@ export const SideBar = styled.div`
   flex: 1;
   position: sticky;
   background: #096192;
-  top: 0;
+  top: 0px;
   height: 100vh;
 `;
+
 export const SideBarWrapper = styled.div`
   height: 100%;
   display: flex;

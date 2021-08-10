@@ -4,7 +4,7 @@ export const WelcomeBar = styled.div`
   height: 100px;
   background: #fff;
   position: sticky;
-  top: 0;
+  top: 0px;
 `;
 export const WelcomeBarWrapper = styled.div`
   padding: 20px;
