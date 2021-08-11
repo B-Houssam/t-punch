@@ -2,6 +2,7 @@ import React from "react";
 import SideBarDD from "../SideBarD";
 import ExploreData from "./ExploreData";
 import WelcomeBarD from "../WelcomeBar";
+//import { Redirect } from "react-router-dom";
 import {
   SideBarContainer,
   ContentContainer,

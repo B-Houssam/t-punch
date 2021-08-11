@@ -25,7 +25,7 @@ const WelcomeBarD = ({ path }) => {
       <WelcomeBar>
         <WelcomeBarWrapper>
           <TextWrapper>
-            <WelcomeText>WELCOME BACK ACME INC. 👋</WelcomeText>
+            <WelcomeText>WELCOME BACK 👋</WelcomeText>
             <WelcomeSubText>{path}</WelcomeSubText>
           </TextWrapper>
           <WelcomeContent>

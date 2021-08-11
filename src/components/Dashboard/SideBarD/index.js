@@ -29,28 +29,28 @@ const SideBarDD = ({ lightBg }) => {
           <SideBarMenu>
             <UpperLogo src={img} alt="profilPic"></UpperLogo>
             <SideBarTitle>DATA</SideBarTitle>
-            <SideBarListItem to="/dashboard/datasets">
+            <SideBarListItem to="/datasets">
               DATASET
               <AiOutlineDatabase />
             </SideBarListItem>
-            <SideBarListItem to="/dashboard/explore">
+            <SideBarListItem to="/explore">
               EXPLORE
               <BsClipboardData />
             </SideBarListItem>
             <SideBarTitle>PAGES</SideBarTitle>
             <SideBarList>
-              <SideBarListItem to="/dashboard/main">
+              <SideBarListItem to="/main">
                 DASHBOARD
                 <AiOutlineDashboard />
               </SideBarListItem>
-              <SideBarListItem to="/dashboard/settings">
+              <SideBarListItem to="/settings">
                 SETTINGS <AiOutlineSetting />
               </SideBarListItem>
-              <SideBarListItem to="/dashboard/messages">
+              <SideBarListItem to="/messages">
                 MESSAGES
                 <BiMessageSquareDetail />
               </SideBarListItem>
-              <SideBarListItem to="/dashboard/account">
+              <SideBarListItem to="/account">
                 ACCOUNT
                 <RiAccountCircleLine />
               </SideBarListItem>

@@ -9,7 +9,8 @@ export const ExWrapper = styled.div`
   align-items: center;
   width: 100%;
   //height: 900px;
-  background: #f3f4ed;
+  //background: #f3f4ed;
+  background: #fff;
 `;
 
 export const SubWrapper = styled.div`
@@ -19,7 +20,8 @@ export const SubWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100px;
-  background: #f3f4ed;
+  //background: #f3f4ed;
+  background: #fff;
 `;
 
 export const ExTxt = styled.p`
@@ -60,6 +62,8 @@ export const LineChart = styled.div`
   padding: 30px;
   margin-right: 50px;
   align-items: flex-start;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 `;
 
 export const DoughnutChart = styled.div`
@@ -71,6 +75,8 @@ export const DoughnutChart = styled.div`
   justify-content: space-between;
   padding: 30px;
   align-items: flex-start;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 `;
 
 export const FormInput = styled.input`
@@ -108,6 +114,9 @@ export const FirstCol = styled.div`
   padding: 20px;
   border-radius: 10px;
   margin: 0px 20px 0px 0px;
+  //box-shadow: 10px 5px 5px grey;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 `;
 
 export const SecondCol = styled.div`
@@ -120,6 +129,8 @@ export const SecondCol = styled.div`
   padding: 20px;
   border-radius: 10px;
   margin: 0px 20px 0px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 `;
 
 export const ThirdCol = styled.div`
@@ -133,6 +144,8 @@ export const ThirdCol = styled.div`
   padding: 20px;
   border-radius: 10px;
   //margin: 0px 20px 0px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 `;
 
 export const SecondSubCol = styled.div`

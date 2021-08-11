@@ -10,7 +10,7 @@ import {
   SecondRow,
   DoughnutChart,
   LineChart,
-  Title,
+  //Title,
   FormInput,
   TitleWrapper,
   FirstCol,

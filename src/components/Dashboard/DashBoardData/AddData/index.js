@@ -51,16 +51,6 @@ const AddData = () => {
       fontFamily: ["Open Sans"].join(","),
     },
   });
-  /*
-  function createData(name, size, path, date) {
-    return { name, size, path, date };
-  }
-
-
-  const rows = [
-    createData(file.name, file.size, "datasets/" + file.name, file.birthtime),
-  ];
-  */
 
   const hiddenFileInput = React.useRef(null);
 
