@@ -16,6 +16,11 @@ var signin = {
   password: "",
 };
 
+var show = {
+  username: "",
+  nickname: "",
+};
+
 //middlewares
 //app.use(cookieParser());
 app.use(
@@ -78,38 +83,59 @@ app.post("/login", async (req, res, next) => {
   });
 });
 
-//Check to make sure header is not undefined, if so, return Forbidden (403)
-const checkToken = (req, res, next) => {
-  const header = req.headers["authorization"];
-
-  if (typeof header !== "undefined") {
-    const bearer = header.split(" ");
-    const token = bearer[1];
-
-    req.token = token;
-    next();
-  } else {
-    //If header is undefined return Forbidden (403)
-    res.sendStatus(403);
-  }
-};
-
-//This is a protected route
-app.get("/protected", checkToken, (req, res) => {
-  //verify the JWT token generated for the user
-  jwt.verify(req.token, "privatekey", (err, authorizedData) => {
-    if (err) {
-      //If error send Forbidden (403)
-      console.log("ERROR: Could not connect to the protected route");
-      res.sendStatus(403);
-    } else {
-      //If token is successfully verified, we can send the autorized data
-      res.json({
-        message: "Successful log in",
-        authorizedData,
+app.get("/show", async (req, res) => {
+  //console.log(req.body);
+  try {
+    MongoClient.connect(url, function (err, db) {
+      var dbo = db.db("tpunch");
+      dbo.collection("user").findOne({}, function (err, result) {
+        if (err) {
+          throw err;
+        } else {
+          show.username = result.username;
+          show.nickname = result.nickname;
+          //console.log(user.password);
+          res.send({
+            status: true,
+            show: show,
+          });
+          db.close();
+        }
       });
-      console.log("SUCCESS: Connected to protected route");
-    }
+    });
+  } catch (error) {
+    res.status(500);
+    res.send({
+      status: false,
+    });
+  }
+});
+
+app.post("/update", async (req, res) => {
+  //console.log(req.body.old);
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("tpunch");
+    var myquery = { username: req.body.old };
+    var newvalues = {
+      $set: {
+        username: req.body.key,
+        password: req.body.password,
+        nickname: req.body.nickname,
+      },
+    };
+    dbo
+      .collection("user")
+      .updateOne(myquery, newvalues, function (err, result) {
+        if (err) {
+          throw err;
+          res.status(500);
+          res.send({ status: false });
+        } else {
+          res.send({ status: true });
+        }
+        db.close();
+      });
   });
 });
 

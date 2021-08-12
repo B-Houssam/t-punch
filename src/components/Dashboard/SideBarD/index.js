@@ -1,4 +1,5 @@
 import React from "react";
+//import { Redirect } from "react-router-dom";
 import {
   SideBar,
   SideBarWrapper,
@@ -6,8 +7,9 @@ import {
   SideBarTitle,
   SideBarListItem,
   SideBarList,
-  Logo,
+  //Logo,
   UpperLogo,
+  Logout,
 } from "./SideBarElements.js";
 import {
   AiOutlineDashboard,
@@ -18,10 +20,15 @@ import {
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { RiAccountCircleLine } from "react-icons/ri";
 import { BsClipboardData } from "react-icons/bs";
+import { FiLogOut } from "react-icons/fi";
 
 import img from "../../../images/svg-9.svg";
 
 const SideBarDD = ({ lightBg }) => {
+  const handleLogout = () => {
+    localStorage.clear();
+  };
+
   return (
     <>
       <SideBar>
@@ -55,8 +62,12 @@ const SideBarDD = ({ lightBg }) => {
                 <RiAccountCircleLine />
               </SideBarListItem>
             </SideBarList>
+            <Logout onClick={handleLogout} to="/account">
+              LOGOUT
+              <FiLogOut />
+            </Logout>
           </SideBarMenu>
-          <Logo>TECH_PUNCH</Logo>
+          {/*<Logo>TECH_PUNCH</Logo>*/}
         </SideBarWrapper>
       </SideBar>
     </>

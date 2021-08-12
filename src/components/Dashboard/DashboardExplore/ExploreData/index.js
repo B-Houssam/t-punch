@@ -207,7 +207,7 @@ const AddData = () => {
               <FirstSubCol>
                 <BsFillPersonFill color="#096192" size="30"></BsFillPersonFill>
                 <CardTitle style={{ "padding-top": "10px" }}>50325</CardTitle>
-                <CardTitle style={{ opacity: "0.5" }}>Visitors</CardTitle>
+                <CardTitle style={{ color: "#787A91" }}>Visitors</CardTitle>
                 <CardIndc>
                   <IoMdArrowDropupCircle></IoMdArrowDropupCircle>
                   {" 15%"}
@@ -219,7 +219,7 @@ const AddData = () => {
                   size="30"
                 ></AiFillDollarCircle>
                 <CardTitle style={{ "padding-top": "10px" }}>98.2k $</CardTitle>
-                <CardTitle style={{ opacity: "0.5" }}>Sales</CardTitle>
+                <CardTitle style={{ color: "#787A91" }}>Sales</CardTitle>
                 <CardIndc>
                   <IoMdArrowDropupCircle></IoMdArrowDropupCircle>
                   {" 20%"}

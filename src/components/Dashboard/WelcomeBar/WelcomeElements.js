@@ -4,6 +4,7 @@ export const WelcomeBar = styled.div`
   height: 100px;
   background: #fff;
   position: sticky;
+  z-index: 9999;
   top: 0px;
 `;
 export const WelcomeBarWrapper = styled.div`
@@ -24,6 +25,7 @@ export const WelcomeText = styled.h1`
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   color: #096192;
+  text-transform: uppercase;
 `;
 export const WelcomeSubText = styled.p`
   //font-size: 21;

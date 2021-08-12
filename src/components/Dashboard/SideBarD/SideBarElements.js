@@ -48,10 +48,11 @@ export const UpperLogo = styled.img`
 `;
 
 export const SideBar = styled.div`
-  flex: 1;
-  position: sticky;
+  position: fixed;
+  z-index: 9999;
   background: #096192;
   top: 0px;
+  width: 15%;
   height: 100vh;
 `;
 
@@ -91,5 +92,23 @@ export const SideBarListItem = styled(LinkR)`
   &:hover,
   &.active {
     background: #053742;
+  }
+`;
+
+export const Logout = styled(LinkR)`
+  margin-top: 50px;
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: flex-start;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 10px;
+  &:hover {
+    background: #bd1616;
   }
 `;

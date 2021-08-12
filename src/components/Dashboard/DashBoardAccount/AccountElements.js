@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const SideBarContainer = styled.div`
-  flex: 1;
-  //width: 13%;
+  width: 15%;
   display: flex;
 `;
 
 export const ContentContainer = styled.div`
-  flex: 6;
+  flex: 1;
 `;
 
 export const DashboardContainer = styled.div`

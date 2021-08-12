@@ -8,7 +8,7 @@ export const AddWrapper = styled.div`
   //justify-content: center;
   align-items: center;
   width: 100%;
-  height: 900px;
+  height: 100vh;
   background: #f3f4ed;
 `;
 

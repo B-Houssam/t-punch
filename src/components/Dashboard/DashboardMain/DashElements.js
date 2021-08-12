@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const SideBarContainer = styled.div`
-  flex: 1;
-  //width: 13%;
-  display: flex;
+  width: 15%;
 `;
 
 export const ContentContainer = styled.div`

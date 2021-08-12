@@ -7,10 +7,10 @@ export const AccWrapper = styled.div`
   flex-direction: column;
   //justify-content: center;
   align-items: center;
-  background: #f3f4ed;
+  //background: #f3f4ed;
   width: 100%;
-  height: 900px;
-  //background: #fff;
+  //height: 100vh;
+  background: #fff;
   padding: 50px;
 `;
 
@@ -54,7 +54,7 @@ export const AccPh = styled.img`
 `;
 
 export const Overlay = styled.div`
-  position: absolute;
+  position: relative;
   background: #000;
   display: flex;
   align-items: center;
@@ -102,7 +102,8 @@ export const AccLo = styled(LinkR)`
 export const AccInfoContainer = styled.div`
   background: #fff;
   display: flex;
-  flex: 4;
+  //width: 50%;
+  flex: 1;
   flex-direction: column;
   padding: 40px;
   justify-content: space-between;
@@ -136,6 +137,7 @@ export const AccInfoBtnSave = styled(LinkR)`
   width: 12%;
   height: 40px;
   background: #096192;
+  pointer-events: ${({ disable }) => (disable ? "none" : "auto")};
   color: #fff;
   text-decoration: none;
   &:hover {
@@ -226,7 +228,6 @@ export const Icon = styled(LinkR)`
 export const FormContent = styled.div`
   height: 100%;
   width: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -240,8 +241,7 @@ export const Form = styled.form`
   //max-width: 400px;
   height: auto;
   width: 100%;
-
-  z-index: 1;
+  //z-index: 1;
   display: grid;
   margin: 0 auto;
   padding: 80px 32px;
@@ -268,8 +268,9 @@ export const FormPass = styled.form`
 export const FormLabel = styled.label`
   margin-bottom: 8px;
   color: #000;
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Open Sans", sans-serif;
+  font-weight: bold;
 `;
 
 export const FormInput = styled.input`
@@ -278,5 +279,6 @@ export const FormInput = styled.input`
   border: none;
   background: #f3f4ed;
   border-radius: 4px;
+  font-size: 14px;
   font-family: "Open Sans", sans-serif;
 `;

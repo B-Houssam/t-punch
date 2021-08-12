@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   WelcomeText,
   WelcomeBarWrapper,
@@ -20,12 +20,27 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import Badge from "@material-ui/core/Badge";
 
 const WelcomeBarD = ({ path }) => {
+  const [nick, setnick] = useState();
+
+  const fetchData = async () => {
+    // eslint-disable-next-line
+    const res = await fetch("http://localhost:3001/show", {
+      method: "GET",
+    }).then((res) => res.json());
+    if (res.status === true) {
+      setnick(res.show.nickname);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <>
       <WelcomeBar>
         <WelcomeBarWrapper>
           <TextWrapper>
-            <WelcomeText>WELCOME BACK 👋</WelcomeText>
+            <WelcomeText>WELCOME BACK {nick} 👋</WelcomeText>
             <WelcomeSubText>{path}</WelcomeSubText>
           </TextWrapper>
           <WelcomeContent>
