@@ -41,10 +41,35 @@ export const SideBarAdd = styled(LinkR)`
 `;
 */
 
+export const CircleBack = styled(LinkR)`
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  display: flex;
+  //padding: 0px 20px 0px 20px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #053742;
+    color: #fff;
+  }
+`;
+
+export const UpperLogoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  //padding: 0px 20px 0px 20px;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const UpperLogo = styled.img`
   width: 50px;
   height: 50px;
-  margin-bottom: 30px;
+  //margin-bottom: 30px;
 `;
 
 export const SideBar = styled.div`
