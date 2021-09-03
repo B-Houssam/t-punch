@@ -8,12 +8,12 @@ import {
   //Line,
   //Menu,
   TextWrapper,
-  CircleSearch,
+  //CircleSearch,
   WelcomeSubText,
   //MenuIcon,
   //MenuTxt,
 } from "./WelcomeElements";
-import { AiOutlineSearch } from "react-icons/ai";
+//import { AiOutlineSearch } from "react-icons/ai";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { IoMdNotificationsOutline } from "react-icons/io";
 //import { RiLogoutBoxRLine } from "react-icons/ri";
@@ -44,16 +44,16 @@ const WelcomeBarD = ({ path }) => {
             <WelcomeSubText>{path}</WelcomeSubText>
           </TextWrapper>
           <WelcomeContent>
+            {/*
             <CircleSearch>
               <AiOutlineSearch size="20px"></AiOutlineSearch>
             </CircleSearch>
-
+          */}
             <Badge badgeContent={0} color="primary" showZero>
               <Circle>
                 <BiMessageSquareDetail size="20px"></BiMessageSquareDetail>
               </Circle>
             </Badge>
-
             <Badge badgeContent={0} color="primary" showZero>
               <Circle>
                 <IoMdNotificationsOutline size="20px"></IoMdNotificationsOutline>

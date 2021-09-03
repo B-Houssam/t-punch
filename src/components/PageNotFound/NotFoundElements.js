@@ -9,5 +9,7 @@ export const Back = styled.div`
   align-items: center;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
-  color: #fff;
+  color: #096192;
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+    1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 `;

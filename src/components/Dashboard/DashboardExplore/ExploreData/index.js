@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { Doughnut, Line, Bar } from "react-chartjs-2";
 
 import {
-  SubWrapper,
+  //SubWrapper,
   ExWrapper,
-  ExTxt,
+  //ExTxt,
   FirstRow,
   SecondRow,
   DoughnutChart,
@@ -22,6 +22,7 @@ import {
   CardTitle,
   CardIndc,
 } from "./ExElements";
+import Overview from "../Overview";
 
 import { IoMdArrowDropupCircle } from "react-icons/io";
 import { AiFillDollarCircle } from "react-icons/ai";
@@ -173,11 +174,7 @@ const AddData = () => {
   return (
     <>
       {file === null ? (
-        <ExWrapper>
-          <SubWrapper>
-            <ExTxt> Click on DATASET to upload a new dataset first!</ExTxt>
-          </SubWrapper>
-        </ExWrapper>
+        <Overview></Overview>
       ) : (
         <ExWrapper>
           <SecondRow>

@@ -1,7 +1,7 @@
 import React from "react";
 import SideBarDD from "../SideBarD";
 import WelcomeBarD from "../WelcomeBar";
-
+import Main from "./Main";
 import {
   SideBarContainer,
   ContentContainer,
@@ -14,7 +14,7 @@ const Dash = () => {
     return (
       <>
         <AiFillHome style={{ "margin-right": "5px" }}></AiFillHome>
-        /Main
+        /Dashboard
       </>
     );
   };
@@ -27,6 +27,7 @@ const Dash = () => {
         </SideBarContainer>
         <ContentContainer>
           <WelcomeBarD path={tellPath()}></WelcomeBarD>
+          <Main></Main>
         </ContentContainer>
       </DashboardContainer>
     </>

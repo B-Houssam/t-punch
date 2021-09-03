@@ -15,13 +15,13 @@ import {
 } from "./SideBarElements.js";
 import {
   AiOutlineDashboard,
-  AiOutlineSetting,
+  //AiOutlineSetting,
   AiOutlineDatabase,
 } from "react-icons/ai";
 
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { RiAccountCircleLine } from "react-icons/ri";
-import { BsClipboardData } from "react-icons/bs";
+import { BsClipboardData, BsPlusCircle } from "react-icons/bs";
 import { MdKeyboardBackspace } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 
@@ -46,25 +46,31 @@ const SideBarDD = ({ lightBg }) => {
               </CircleBack>
               <UpperLogo src={img} alt="profilPic"></UpperLogo>
             </UpperLogoContainer>
-
-            <SideBarTitle>DATA</SideBarTitle>
+            <SideBarTitle>CLIENT DATA</SideBarTitle>
             <SideBarListItem to="/datasets">
-              DATASET
+              SOURCE
               <AiOutlineDatabase />
             </SideBarListItem>
             <SideBarListItem to="/explore">
               EXPLORE
               <BsClipboardData />
             </SideBarListItem>
-            <SideBarTitle>PAGES</SideBarTitle>
+            <SideBarTitle>SOCIAL DATA</SideBarTitle>
             <SideBarList>
+              <SideBarListItem to="/newanalysis">
+                NEW ANALYSIS
+                <BsPlusCircle />
+              </SideBarListItem>
               <SideBarListItem to="/main">
                 DASHBOARD
                 <AiOutlineDashboard />
               </SideBarListItem>
+              {/*
               <SideBarListItem to="/settings">
                 SETTINGS <AiOutlineSetting />
               </SideBarListItem>
+              */}
+              <SideBarTitle>SETTINGS</SideBarTitle>
               <SideBarListItem to="/messages">
                 MESSAGES
                 <BiMessageSquareDetail />

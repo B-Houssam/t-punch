@@ -121,7 +121,7 @@ export const SideBarListItem = styled(LinkR)`
 `;
 
 export const Logout = styled(LinkR)`
-  margin-top: 50px;
+  //margin-top: 30px;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
   color: #fff;

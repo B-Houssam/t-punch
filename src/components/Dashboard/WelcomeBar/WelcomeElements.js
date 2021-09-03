@@ -6,6 +6,8 @@ export const WelcomeBar = styled.div`
   position: sticky;
   z-index: 9999;
   top: 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 `;
 export const WelcomeBarWrapper = styled.div`
   padding: 20px;
@@ -39,6 +41,7 @@ export const WelcomeContent = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-right: 10px;
 `;
 
 export const Circle = styled.div`

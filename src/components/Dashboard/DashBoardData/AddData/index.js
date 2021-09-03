@@ -130,7 +130,9 @@ const AddData = () => {
       {file === null ? (
         <AddWrapper>
           <AddBtnWrapper>
-            <AddTxt>Upload a new dataset or replace the selected one.</AddTxt>
+            <AddTxt>
+              Upload a new data source or replace the selected one.
+            </AddTxt>
             <AddBtn onClick={handleClick}>
               Select file
               <AiFillFolderAdd size="25px"></AiFillFolderAdd>
