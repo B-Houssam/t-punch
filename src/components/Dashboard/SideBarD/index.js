@@ -65,6 +65,10 @@ const SideBarDD = ({ lightBg }) => {
                 DASHBOARD
                 <AiOutlineDashboard />
               </SideBarListItem>
+              <SideBarListItem to="/history">
+                HISTORY
+                <AiOutlineDatabase />
+              </SideBarListItem>
               {/*
               <SideBarListItem to="/settings">
                 SETTINGS <AiOutlineSetting />

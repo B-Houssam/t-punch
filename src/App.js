@@ -7,6 +7,7 @@ import DashD from "./pages/dashdata";
 import DashA from "./pages/dashaccount";
 import DashE from "./pages/dashexplore";
 import DashN from "./pages/newanalysis";
+import DashH from "./pages/dashhistory";
 import DashMessages from "./pages/dashmessages";
 import PageNotFound from "./components/PageNotFound";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -57,6 +58,7 @@ function App() {
         <GuardRoute path="/explore" component={DashE} exact />
         <GuardRoute path="/messages" component={DashMessages} exact />
         <GuardRoute path="/newanalysis" component={DashN} exact />
+        <GuardRoute path="/history" component={DashH} exact />
         <Route component={PageNotFound} />
       </Switch>
     </Router>

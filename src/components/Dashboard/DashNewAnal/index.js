@@ -1,6 +1,7 @@
 import React from "react";
 import SideBarDD from "../SideBarD";
 import WelcomeBarD from "../WelcomeBar";
+import NewA from "./NewA";
 import {
   SideBarContainer,
   ContentContainer,
@@ -26,6 +27,7 @@ const NewAnal = () => {
         </SideBarContainer>
         <ContentContainer>
           <WelcomeBarD path={tellPath()}></WelcomeBarD>
+          <NewA></NewA>
         </ContentContainer>
       </DashboardContainer>
     </>
