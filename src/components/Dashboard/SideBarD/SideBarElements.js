@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
 
-export const Logo = styled.h1`
+export const Logo = styled.span`
   font-family: "Oswald", sans-serif;
   margin-bottom: 10px;
-  color: #053742;
+  //color: #053742;
+  color: #fff;
   padding: 20px;
-  font-size: 18px;
+  font-size: 21px;
   font-weight: bold;
   text-align: center;
+  opacity: 0.8;
   //text-shadow: 2px 2px 1px #000;
 `;
 

@@ -7,7 +7,7 @@ import {
   SideBarTitle,
   SideBarListItem,
   SideBarList,
-  //Logo,
+  Logo,
   UpperLogo,
   Logout,
   UpperLogoContainer,
@@ -89,7 +89,7 @@ const SideBarDD = ({ lightBg }) => {
               <FiLogOut />
             </Logout>
           </SideBarMenu>
-          {/*<Logo>TECH_PUNCH</Logo>*/}
+          <Logo>TECH_PUNCH 👊</Logo>
         </SideBarWrapper>
       </SideBar>
     </>
