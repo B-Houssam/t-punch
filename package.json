@@ -37,7 +37,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:server": "nodemon ./src/server.js",
-    "dev": "concurrently --kill-others \"npm run start:server\" \"npm run start\" \"nodemon ./src/authServer.js\""
+    "dev": "concurrently --kill-others \"npm run start:server\" \"npm run start\" \"nodemon ./src/authServer.js\" \"nodemon ./src/dataServer.js\""
   },
   "eslintConfig": {
     "extends": [

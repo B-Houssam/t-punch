@@ -1,6 +1,7 @@
 import React from "react";
 import SideBarDD from "../SideBarD";
 import WelcomeBarD from "../WelcomeBar";
+import His from "./History";
 import {
   SideBarContainer,
   ContentContainer,
@@ -26,6 +27,7 @@ const History = () => {
         </SideBarContainer>
         <ContentContainer>
           <WelcomeBarD path={tellPath()}></WelcomeBarD>
+          <His></His>
         </ContentContainer>
       </DashboardContainer>
     </>
