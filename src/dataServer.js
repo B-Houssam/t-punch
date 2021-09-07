@@ -90,13 +90,53 @@ app.get("/getquery", async (req, res) => {
       .collection("extracted")
       .findOne({ query: rs.query }, { projection: { tweets_ids: 1, _id: 0 } });
     tweets = [];
+    dates = [];
     for (let index = 0; index < reslt.tweets_ids.length; index++) {
       const rslt = await db
-        .collection("twwets")
-        .findOne({ _id: ObjectId(reslt.tweets_ids[25]) });
+        .collection("tweets")
+        .findOne(
+          { _id: ObjectId(reslt.tweets_ids[index]) },
+          { sort: { post_time: -1 } }
+        ); //order by date
       tweets.push(rslt);
+      dates.push(rslt.post_time);
     }
-    await res.send({ query: query, tweets: tweets });
+
+    dts = [];
+    for (let index = 0; index < dates.length; index++) {
+      var med = "" + dates[index];
+      if (!dts.includes(med.substring(0, 15))) {
+        dts.push(med.substring(0, 15));
+      }
+    }
+
+    ratpos = [];
+    ratneg = [];
+    dts.forEach((element) => {
+      var pos = 0;
+      var neg = 0;
+
+      for (let index = 0; index < tweets.length; index++) {
+        if (element === tweets[index].post_time.toString().substring(0, 15)) {
+          if (tweets[index].label === "positive") {
+            pos++;
+          }
+          if (tweets[index].label === "negative") {
+            neg++;
+          }
+        }
+      }
+      ratpos.push(pos);
+      ratneg.push(neg);
+    });
+
+    await res.send({
+      query: query,
+      dates: dts,
+      tweets: tweets,
+      ratpos: ratpos,
+      ratneg: ratneg,
+    });
     c.close();
   } catch (error) {
     throw error;
