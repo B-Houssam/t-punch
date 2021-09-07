@@ -112,9 +112,11 @@ app.get("/getquery", async (req, res) => {
 
     ratpos = [];
     ratneg = [];
+    ratnet = [];
     dts.forEach((element) => {
       var pos = 0;
       var neg = 0;
+      var net = 0;
 
       for (let index = 0; index < tweets.length; index++) {
         if (element === tweets[index].post_time.toString().substring(0, 15)) {
@@ -124,18 +126,102 @@ app.get("/getquery", async (req, res) => {
           if (tweets[index].label === "negative") {
             neg++;
           }
+          if (tweets[index].label === "neutral") {
+            net++;
+          }
         }
       }
       ratpos.push(pos);
       ratneg.push(neg);
+      ratnet.push(net);
     });
+    days = [];
+    week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    week.forEach((element) => {
+      var count = 0;
+      for (let index = 0; index < tweets.length; index++) {
+        if (element === tweets[index].post_time.toString().substring(0, 3)) {
+          count++;
+        }
+      }
+      days.push(count);
+    });
+    weekly = [];
+    var i = 0;
+    var num = 0;
+    for (let index = 0; index < ratpos.length; index++) {
+      if (i < 7) {
+        num = num + ratpos[index] + ratneg[index] + ratnet[index];
+        i++;
+      } else {
+        weekly.push(num);
+        num = 0;
+        num = ratpos[index] + ratneg[index] + ratnet[index];
+        i = 0;
+        i++;
+      }
+    }
+
+    weekdates = [];
+    for (let index = 0; index < weekly.length; index++) {
+      weekdates.push(index + 1);
+    }
+    daily = [];
+    for (let index = 0; index < ratnet.length; index++) {
+      daily.push(ratnet[index] + ratneg[index] + ratpos[index]);
+    }
+
+    weekpos = [];
+    weekneg = [];
+    var j = 0;
+    var pp = 0;
+    var nn = 0;
+    for (let index = 0; index < ratpos.length; index++) {
+      if (j < 7) {
+        pp = pp + ratpos[index];
+        nn = nn + ratneg[index];
+        j++;
+      } else {
+        weekpos.push(pp);
+        weekneg.push(nn);
+        pp = 0;
+        nn = 0;
+        pp = pp + ratpos[index];
+        nn = nn + ratneg[index];
+        j = 0;
+        j++;
+      }
+    }
+
+    ratio = [];
+    weeklyratio = [];
+    for (let index = 0; index < ratpos.length; index++) {
+      ratio.push(ratpos[index] - ratneg[index]);
+    }
+    for (let index = 0; index < weekpos.length; index++) {
+      weeklyratio.push(weekpos[index] - weekneg[index]);
+    }
+
+    sample = [];
+    for (let index = 0; index < 10; index++) {
+      sample.push(tweets[index]);
+    }
 
     await res.send({
+      sample: sample,
       query: query,
       dates: dts,
-      tweets: tweets,
+      weekly: weekly,
+      daily: daily,
+      weekdates: weekdates,
+      days: days,
+      ratio: ratio,
+      weeklyratio: weeklyratio,
+      //tweets: tweets,
       ratpos: ratpos,
       ratneg: ratneg,
+      weekpos: weekpos,
+      weekneg: weekneg,
     });
     c.close();
   } catch (error) {
