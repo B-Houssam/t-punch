@@ -38,7 +38,7 @@ function App() {
 
         // Do all your conditional tests here
         return item !== null ? (
-          <Redirect to="/explore" />
+          <Redirect to="/datasets" />
         ) : (
           <Component {...routeProps} />
         );
