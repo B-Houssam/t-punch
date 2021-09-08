@@ -2,18 +2,31 @@ const express = require("express");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
 const morgan = require("morgan");
+const bodyParser = require("body-parser");
 
 const fs = require("fs");
 const path = require("path");
-const dir = "./datasets";
+const dir = "./src/dataset";
 
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 app.use(
   fileUpload({
     createParentPath: true,
   })
 );
+
+var MongoClient = require("mongodb").MongoClient;
+var url = "mongodb://localhost:27017";
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+const ObjectId = require("mongodb").ObjectId;
 
 app.use(cors());
 app.use(express.json());
@@ -40,7 +53,26 @@ app.post("/public", async (req, res) => {
         }
       });
 
-      file.mv("./datasets/" + file.name);
+      file.mv("./src/dataset/clientData.JSON");
+      //add new collection after emptying it
+      MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("tpunch");
+        dbo.collection("client").deleteMany({}, function (err, result) {
+          if (err) {
+            console.log(err);
+          }
+          console.log(result);
+        });
+        const data = fs.readFileSync("./src/dataset/clientData.JSON");
+        const docs = JSON.parse(data.toString());
+        //console.log(docs);
+        dbo.collection("client").insertMany(docs, function (err, result) {
+          if (err) throw err;
+          console.log("Inserted docs:", result.insertedCount);
+          db.close();
+        });
+      });
 
       res.send({
         status: true,

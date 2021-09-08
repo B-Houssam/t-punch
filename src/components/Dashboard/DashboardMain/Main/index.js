@@ -47,12 +47,15 @@ const Main = () => {
   });
   */
 
+  const [file, setfile] = useState(null);
   const [query, setquery] = useState(null);
   const [social, setsocial] = useState(true);
   const [comp, setcomp] = useState(true);
   const [checked, setchecked] = useState(false);
   const [checkedf, setcheckedf] = useState(false);
   const [checkedff, setcheckedff] = useState(false);
+  const [checked2, setchecked2] = useState(false);
+  const [checked1, setchecked1] = useState(false);
 
   const fetchData = async () => {
     // eslint-disable-next-line
@@ -61,7 +64,15 @@ const Main = () => {
     })
       .then((res) => res.json())
       .then((res) => setquery(res));
+
+    // eslint-disable-next-line
+    const tes = await fetch("http://localhost:8000/public", {
+      method: "GET",
+    })
+      .then((tes) => tes.json())
+      .then((tes) => setfile(tes));
   };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -84,6 +95,14 @@ const Main = () => {
 
   const handleChangeff = () => {
     setcheckedff(!checkedff);
+  };
+
+  const handleChange2 = () => {
+    setchecked2(!checked2);
+  };
+
+  const handleChange1 = () => {
+    setchecked1(!checked1);
   };
 
   const getDay = () => {
@@ -137,6 +156,28 @@ const Main = () => {
     }
   };
 
+  const options = {
+    scales: {
+      yAxes: [
+        {
+          type: "linear",
+          display: true,
+          position: "left",
+          id: "y-axis-1",
+        },
+        {
+          type: "linear",
+          display: true,
+          position: "right",
+          id: "y-axis-2",
+          gridLines: {
+            drawOnArea: false,
+          },
+        },
+      ],
+    },
+  };
+
   return (
     <>
       {query === null ? (
@@ -150,7 +191,17 @@ const Main = () => {
               "margin-bottom": "20px",
             }}
           >
-            <Skeleton height={200} />
+            <div
+              style={{
+                "font-family": "Oswald,sans-serif",
+                "font-size": "72px",
+                "font-weight": "bold",
+                color: "#EEEEEE",
+              }}
+            >
+              LOADING
+            </div>
+            <Skeleton height={180} />
           </div>
           <div
             style={{
@@ -178,10 +229,7 @@ const Main = () => {
               "margin-bottom": "20px",
             }}
           >
-            <Skeleton height={130} />
-          </div>
-          <div>
-            <Skeleton height={40} />
+            <Skeleton height={100} />
           </div>
         </div>
       ) : (
@@ -355,7 +403,7 @@ const Main = () => {
                 }}
               >
                 <SubTitle style={{ "margin-bottom": "20px" }}>
-                  Tweets per {checked ? "Day" : "Week"}
+                  Tweets per {checked ? "Week" : "Day"}
                 </SubTitle>
                 <Switch
                   checked={checked}
@@ -373,11 +421,11 @@ const Main = () => {
               </div>
               <Bar
                 data={{
-                  labels: checked ? query.dates : query.weekdates,
+                  labels: checked ? query.weekdates : query.dates,
                   datasets: [
                     {
                       label: "# of tweets",
-                      data: checked ? query.daily : query.weekly,
+                      data: checked ? query.weekly : query.daily,
                       fill: false,
                       backgroundColor: "rgba(54, 162, 235, 1)",
                       borderColor: "rgba(54, 162, 235, 0.2)",
@@ -449,7 +497,7 @@ const Main = () => {
                   width={48}
                 />
               </div>
-              <Bar
+              <Line
                 data={{
                   labels: checkedff ? query.weekdates : query.dates,
                   datasets: [
@@ -535,6 +583,172 @@ const Main = () => {
               <BsFillCaretDownFill></BsFillCaretDownFill>
             )}
           </BigTitle>
+          {file === null ? (
+            <>
+              <div
+                style={{
+                  padding: "100px",
+                }}
+              >
+                <div
+                  style={{
+                    "margin-bottom": "20px",
+                  }}
+                >
+                  <div
+                    style={{
+                      "font-family": "Oswald,sans-serif",
+                      "font-size": "72px",
+                      "font-weight": "bold",
+                      color: "grey",
+                    }}
+                  >
+                    OOPS! ... NO INTERNAL DATA TO USE
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <DataContainer display={comp}>
+                <LineContainer>
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      "flex-direction": "row",
+                      "justify-content": "space-between",
+                    }}
+                  >
+                    <SubTitle style={{ "margin-bottom": "20px" }}>
+                      {checked1 ? "Weekly" : "Daily"} Client's Sales by Tweets
+                      Sentiment
+                    </SubTitle>
+                    <Switch
+                      checked={checked1}
+                      onChange={handleChange1}
+                      onColor="#86d3ff"
+                      onHandleColor="#096192"
+                      handleDiameter={30}
+                      uncheckedIcon={false}
+                      checkedIcon={false}
+                      boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                      activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                      height={20}
+                      width={48}
+                    />
+                  </div>
+                  <Bar
+                    data={{
+                      labels: checked1 ? query.weekdates : query.dates,
+                      datasets: [
+                        {
+                          type: "line",
+                          label: "# of positif reviews",
+                          data: checked1 ? query.wsales : query.sales,
+                          fill: false,
+                          backgroundColor: "#34f",
+                          borderColor: "#3df",
+                          yAxisID: "y-axis-1",
+                        },
+                        {
+                          type: "bar",
+                          label: "# of positif tweets",
+                          data: checked1 ? query.weekpos : query.ratpos,
+                          fill: false,
+                          backgroundColor: "rgba(54, 162, 235, 1)",
+                          yAxisID: "y-axis-2",
+                        },
+                        {
+                          type: "bar",
+                          label: "# of negatif tweets",
+                          data: checked1 ? query.weekneg : query.ratneg,
+                          fill: false,
+                          backgroundColor: "rgba(255, 99, 132, 1)",
+                          yAxisID: "y-axis-2",
+                        },
+                      ],
+                    }}
+                    options={options}
+                  />
+                </LineContainer>
+              </DataContainer>
+              <DataContainer display={comp}>
+                <LineContainer>
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      "flex-direction": "row",
+                      "justify-content": "space-between",
+                    }}
+                  >
+                    <SubTitle style={{ "margin-bottom": "20px" }}>
+                      {checked ? "Weekly" : "Daily"} Client's Reviews VS Tweets
+                      Sentiment
+                    </SubTitle>
+                    <Switch
+                      checked={checked2}
+                      onChange={handleChange2}
+                      onColor="#86d3ff"
+                      onHandleColor="#096192"
+                      handleDiameter={30}
+                      uncheckedIcon={false}
+                      checkedIcon={false}
+                      boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                      activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                      height={20}
+                      width={48}
+                    />
+                  </div>
+                  <Bar
+                    data={{
+                      labels: checked2 ? query.weekdates : query.dates,
+                      datasets: [
+                        {
+                          label: "# of positif tweets",
+                          data: checked2 ? query.weekpos : query.ratpos,
+                          fill: false,
+                          backgroundColor: "rgba(54, 162, 235, 1)",
+                        },
+                        {
+                          label: "# of negatif tweets",
+                          data: checked2 ? query.weekneg : query.ratneg,
+                          fill: false,
+                          backgroundColor: "rgba(255, 99, 132, 1)",
+                        },
+                        {
+                          label: "# of positif reviews",
+                          data: checked2 ? query.wpos : query.pos,
+                          fill: false,
+                          backgroundColor: "rgba(54, 162, 235, 0.2)",
+                          borderColor: "rgba(54, 162, 235, 1)",
+                        },
+                        {
+                          label: "# of negatif reviews",
+                          data: checked2 ? query.wneg : query.neg,
+                          fill: false,
+                          backgroundColor: "rgba(255, 99, 132, 0.2)",
+                          borderColor: "rgba(255, 99, 132, 1)",
+                        },
+                      ],
+                    }}
+                    options={{
+                      scales: {
+                        yAxes: [
+                          {
+                            ticks: {
+                              beginAtZero: true,
+                            },
+                          },
+                        ],
+                      },
+                    }}
+                  />
+                </LineContainer>
+              </DataContainer>
+            </>
+          )}
         </>
       )}
     </>

@@ -3,168 +3,69 @@ import { useState, useEffect } from "react";
 import { Doughnut, Line, Bar } from "react-chartjs-2";
 
 import {
-  //SubWrapper,
-  ExWrapper,
-  //ExTxt,
-  FirstRow,
-  SecondRow,
-  DoughnutChart,
-  LineChart,
-  //Title,
-  FormInput,
-  TitleWrapper,
-  FirstCol,
-  SecondCol,
-  ThirdCol,
-  FirstSubCol,
-  SecondSubCol,
-  CardSubTitleWrapper,
-  CardTitle,
-  CardIndc,
+  SubTitle,
+  DoughnutContainer,
+  LineContainer,
+  DataContainer,
 } from "./ExElements";
-import Overview from "../Overview";
 
-import { IoMdArrowDropupCircle } from "react-icons/io";
-import { AiFillDollarCircle } from "react-icons/ai";
-import { BsFillPersonFill } from "react-icons/bs";
+import Switch from "react-switch";
+import Skeleton from "react-loading-skeleton";
 
 const AddData = () => {
-  const [file, setfile] = useState(null);
+  //const [file, setfile] = useState(null);
+  const [query, setquery] = useState(null);
+  const [checked, setchecked] = useState(false);
+  const [checkedf, setcheckedf] = useState(false);
+  const [checkedff, setcheckedff] = useState(false);
 
   const fetchData = async () => {
     // eslint-disable-next-line
     const res = await fetch("http://localhost:8000/public", {
       method: "GET",
+    }).then((res) => res.json());
+    //.then((res) => setfile(res));
+
+    //eslint-disable-next-line
+    const tes = await fetch("http://localhost:3002/getclient", {
+      method: "GET",
     })
-      .then((res) => res.json())
-      .then((res) => setfile(res));
+      .then((tes) => tes.json())
+      .then((tes) => setquery(tes));
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  /*
-  const hiddenFileInput = React.useRef(null);
-
-  const handleClick = (event) => {
-    hiddenFileInput.current.click();
+  const handleChange = () => {
+    setchecked(!checked);
   };
 
-  
-  const handleAction = async (data) => {
-    const formData = new FormData();
-    formData.append("file", selected);
-    const res = await fetch("http://localhost:8000/public", {
-      method: "POST",
-      body: formData,
-    }).then((res) => res.json());
-    if (res.status === true) {
-      toast.success("Upload succesful!", {
-        position: "bottom-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
-    } else {
-      toast.error("Upload failed!", {
-        position: "bottom-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-    setfile(false);
-    setshow(false);
-    fetchData();
-  };
-  */
-
-  const data = {
-    labels: ["EU", "NA", "JP"],
-    datasets: [
-      {
-        label: "# of Millions",
-        data: [12, 19, 3],
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-        ],
-        borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-        ],
-        borderWidth: 1,
-      },
-    ],
+  const handleChangef = () => {
+    setcheckedf(!checkedf);
   };
 
-  const data2 = {
-    labels: ["1", "2", "3", "4", "5", "6"],
-    datasets: [
-      {
-        label: "# of sales in Millions",
-        data: [12, 19, 3, 5, 2, 3],
-        fill: false,
-        backgroundColor: "rgba(54, 162, 235, 1)",
-        borderColor: "rgba(54, 162, 235, 0.2)",
-      },
-    ],
+  const handleChangeff = () => {
+    setcheckedff(!checkedff);
   };
 
   const options = {
     scales: {
       yAxes: [
         {
-          ticks: {
-            beginAtZero: true,
-          },
+          type: "linear",
+          display: true,
+          position: "left",
+          id: "y-axis-1",
         },
-      ],
-    },
-  };
-
-  const data3 = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [
-      {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-        ],
-        borderColor: [
-          "rgba(75, 192, 192, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(75, 192, 192, 1)",
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const options2 = {
-    scales: {
-      yAxes: [
         {
-          ticks: {
-            beginAtZero: true,
+          type: "linear",
+          display: true,
+          position: "right",
+          id: "y-axis-2",
+          gridLines: {
+            drawOnArea: false,
           },
         },
       ],
@@ -173,71 +74,257 @@ const AddData = () => {
 
   return (
     <>
-      {file === null ? (
-        <Overview></Overview>
+      {query === null ? (
+        <div
+          style={{
+            padding: "100px",
+          }}
+        >
+          <div
+            style={{
+              "margin-bottom": "20px",
+            }}
+          >
+            <div
+              style={{
+                "font-family": "Oswald,sans-serif",
+                "font-size": "72px",
+                "font-weight": "bold",
+                color: "#EEEEEE",
+              }}
+            >
+              LOADING
+            </div>
+            <Skeleton height={180} />
+          </div>
+          <div
+            style={{
+              "margin-bottom": "20px",
+            }}
+          >
+            <Skeleton height={40} />
+          </div>
+          <div
+            style={{
+              "margin-bottom": "20px",
+            }}
+          >
+            <Skeleton height={40} />
+          </div>
+          <div
+            style={{
+              "margin-bottom": "20px",
+            }}
+          >
+            <Skeleton height={40} />
+          </div>
+          <div
+            style={{
+              "margin-bottom": "20px",
+            }}
+          >
+            <Skeleton height={100} />
+          </div>
+        </div>
       ) : (
-        <ExWrapper>
-          <SecondRow>
-            <FirstCol>
-              <CardTitle>Average Value Order</CardTitle>
-              <CardSubTitleWrapper>
-                {"12'589 $"}
-                <CardIndc>
-                  <IoMdArrowDropupCircle></IoMdArrowDropupCircle>
-                  {" 15%"}
-                </CardIndc>
-              </CardSubTitleWrapper>
-              <Bar data={data3} options={options2} />
-            </FirstCol>
-            <SecondCol>
-              <CardTitle>Convertion Rate</CardTitle>
-              <CardSubTitleWrapper>
-                {"27 %"}
-                <CardIndc>
-                  <IoMdArrowDropupCircle></IoMdArrowDropupCircle>
-                  {" 15%"}
-                </CardIndc>
-              </CardSubTitleWrapper>
-              <Bar data={data3} options={options2} />
-            </SecondCol>
-            <ThirdCol>
-              <FirstSubCol>
-                <BsFillPersonFill color="#096192" size="30"></BsFillPersonFill>
-                <CardTitle style={{ "padding-top": "10px" }}>50325</CardTitle>
-                <CardTitle style={{ color: "#787A91" }}>Visitors</CardTitle>
-                <CardIndc>
-                  <IoMdArrowDropupCircle></IoMdArrowDropupCircle>
-                  {" 15%"}
-                </CardIndc>
-              </FirstSubCol>
-              <SecondSubCol>
-                <AiFillDollarCircle
-                  color="#096192"
-                  size="30"
-                ></AiFillDollarCircle>
-                <CardTitle style={{ "padding-top": "10px" }}>98.2k $</CardTitle>
-                <CardTitle style={{ color: "#787A91" }}>Sales</CardTitle>
-                <CardIndc>
-                  <IoMdArrowDropupCircle></IoMdArrowDropupCircle>
-                  {" 20%"}
-                </CardIndc>
-              </SecondSubCol>
-            </ThirdCol>
-          </SecondRow>
-          <FirstRow>
-            <LineChart>
-              <CardTitle>Daily Line Chart</CardTitle>
-              <Line data={data2} options={options} />
-            </LineChart>
-            <DoughnutChart>
-              <TitleWrapper>
-                <CardTitle>Status</CardTitle>
-                <FormInput type="text" placeholder="Publisher"></FormInput>
-              </TitleWrapper>
-              <Doughnut data={data}></Doughnut>
-            </DoughnutChart>
-          </FirstRow>
-        </ExWrapper>
+        <>
+          <DataContainer>
+            <LineContainer>
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  "flex-direction": "row",
+                  "justify-content": "space-between",
+                }}
+              >
+                <SubTitle style={{ "margin-bottom": "20px" }}>
+                  {checked ? "Weekly" : "Daily"} Line of Sales
+                </SubTitle>
+                <Switch
+                  checked={checked}
+                  onChange={handleChange}
+                  onColor="#86d3ff"
+                  onHandleColor="#096192"
+                  handleDiameter={30}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                  activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                  height={20}
+                  width={48}
+                />
+              </div>
+              <Line
+                data={{
+                  labels: checked ? query.weeks : query.days,
+                  datasets: [
+                    {
+                      label: "# Sales in $",
+                      data: checked ? query.wsales : query.sales,
+                      fill: false,
+                      backgroundColor: "#86d3ff",
+                      borderColor: "#86d3ff",
+                    },
+                  ],
+                }}
+                options={{
+                  scales: {
+                    yAxes: [
+                      {
+                        ticks: {
+                          beginAtZero: true,
+                        },
+                      },
+                    ],
+                  },
+                }}
+              />
+            </LineContainer>
+            <LineContainer>
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  "flex-direction": "row",
+                  "justify-content": "space-between",
+                }}
+              >
+                <SubTitle style={{ "margin-bottom": "20px" }}>
+                  {checkedf ? "Weekly" : "Daily"} Line of Imported Reviews
+                </SubTitle>
+                <Switch
+                  checked={checkedf}
+                  onChange={handleChangef}
+                  onColor="#86d3ff"
+                  onHandleColor="#096192"
+                  handleDiameter={30}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                  activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                  height={20}
+                  width={48}
+                />
+              </div>
+              <Bar
+                data={{
+                  labels: checkedf ? query.weeks : query.days,
+                  datasets: [
+                    {
+                      label: "# positif review",
+                      data: checkedf ? query.wpos : query.pos,
+                      fill: false,
+                      backgroundColor: "rgba(54, 162, 235, 1)",
+                      borderColor: "rgba(54, 162, 235, 0.2)",
+                    },
+                    {
+                      label: "# negatif review",
+                      data: checkedf ? query.wneg : query.neg,
+                      fill: false,
+                      backgroundColor: "rgba(255, 99, 132, 1)",
+                      borderColor: "rgba(255, 99, 132, 0.2)",
+                    },
+                  ],
+                }}
+                options={{
+                  scales: {
+                    yAxes: [
+                      {
+                        ticks: {
+                          beginAtZero: true,
+                        },
+                      },
+                    ],
+                  },
+                }}
+              />
+            </LineContainer>
+          </DataContainer>
+          <DataContainer>
+            <DoughnutContainer>
+              <SubTitle style={{ "margin-bottom": "20px" }}>
+                Reviews's Positif and Negatif Distribution
+              </SubTitle>
+              <Doughnut
+                data={{
+                  labels: ["Negatif", "Positif"],
+                  datasets: [
+                    {
+                      label: "# of Tweets",
+                      data: [query.dailyneg, query.dailypos],
+                      backgroundColor: ["rgba(255, 99, 132, 0.2)", "#CDF3A2"],
+                      borderColor: ["rgba(255, 99, 132, 1)", "#57837B"],
+                      borderWidth: 1,
+                    },
+                  ],
+                }}
+              ></Doughnut>
+            </DoughnutContainer>
+            <LineContainer>
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  "flex-direction": "row",
+                  "justify-content": "space-between",
+                }}
+              >
+                <SubTitle style={{ "margin-bottom": "20px" }}>
+                  {checkedff ? "Daily" : "Weekly"} Sales by Imported Reviews
+                </SubTitle>
+                <Switch
+                  checked={checkedff}
+                  onChange={handleChangeff}
+                  onColor="#86d3ff"
+                  onHandleColor="#096192"
+                  handleDiameter={30}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                  activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                  height={20}
+                  width={48}
+                />
+              </div>
+              <Bar
+                data={{
+                  labels: checkedff ? query.days : query.weeks,
+                  datasets: [
+                    {
+                      type: "line",
+                      label: "# sales in $",
+                      data: checkedff ? query.sales : query.wsales,
+                      fill: false,
+                      backgroundColor: "#86d3ff",
+                      borderColor: "#86d3ff",
+                      yAxisID: "y-axis-2",
+                    },
+                    {
+                      type: "bar",
+                      label: "# positif review",
+                      data: checkedff ? query.pos : query.wpos,
+                      fill: false,
+                      backgroundColor: "rgb(54, 162, 235)",
+                      borderWidth: 2,
+                      yAxisID: "y-axis-1",
+                    },
+                    {
+                      type: "bar",
+                      label: "# negatif review",
+                      data: checkedff ? query.neg : query.wneg,
+                      fill: false,
+                      backgroundColor: "rgb(255, 99, 132)",
+                      borderWidth: 2,
+                      yAxisID: "y-axis-1",
+                    },
+                  ],
+                }}
+                options={options}
+              />
+            </LineContainer>
+          </DataContainer>
+        </>
       )}
     </>
   );

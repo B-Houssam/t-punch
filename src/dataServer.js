@@ -78,6 +78,82 @@ app.get("/getanal", async (req, res) => {
   });
 });
 
+app.get("/getclient", async (req, res) => {
+  try {
+    dailyposc = 0;
+    dailynegc = 0;
+    const c = await MongoClient.connect(url);
+    const db = c.db("tpunch");
+    const clnt = await db.collection("client").find({}).toArray();
+    clnt.forEach((element) => {
+      dailyposc = dailyposc + element.pos;
+    });
+    const clt = await db.collection("client").find({}).toArray();
+    clt.forEach((element) => {
+      dailynegc = dailynegc + element.neg;
+    });
+    days = [];
+    weeks = [];
+    wpos = [];
+    wneg = [];
+    pos = [];
+    neg = [];
+    sales = [];
+    wsales = [];
+    const ct = await db.collection("client").find({}).toArray();
+    ct.forEach((element) => {
+      pos.push(element.pos);
+      neg.push(element.neg);
+      days.push(element.date);
+      sales.push(element.sales);
+    });
+    var ii = 0;
+    var n = 0;
+    var p = 0;
+    var w = 0;
+    var ws = 0;
+    for (let index = 0; index < ct.length; index++) {
+      if (ii < 7) {
+        n = n + neg[index];
+        p = p + pos[index];
+        ws = ws + sales[index];
+        ii++;
+      } else {
+        w++;
+        wpos.push(p);
+        wneg.push(n);
+        weeks.push(w);
+        wsales.push(ws);
+        n = 0;
+        p = 0;
+        ws = 0;
+        n = n + neg[index];
+        p = p + pos[index];
+        ii = 0;
+        ii++;
+      }
+    }
+
+    await res.send({
+      sales: sales,
+      wsales: wsales,
+      weeks: weeks,
+      wpos: wpos,
+      wneg: wneg,
+      pos: pos,
+      neg: neg,
+      days: days,
+      dailypos: dailyposc,
+      dailyneg: dailynegc,
+    });
+    c.close();
+  } catch (error) {
+    throw error;
+    res.status(500);
+    res.send(res.status);
+  }
+});
+
 app.get("/getquery", async (req, res) => {
   try {
     const c = await MongoClient.connect(url);
@@ -96,7 +172,7 @@ app.get("/getquery", async (req, res) => {
         .collection("tweets")
         .findOne(
           { _id: ObjectId(reslt.tweets_ids[index]) },
-          { sort: { post_time: -1 } }
+          { sort: { datefield: 1 } }
         ); //order by date
       tweets.push(rslt);
       dates.push(rslt.post_time);
@@ -202,13 +278,58 @@ app.get("/getquery", async (req, res) => {
       weeklyratio.push(weekpos[index] - weekneg[index]);
     }
 
+    wpos = [];
+    wneg = [];
+    pos = [];
+    neg = [];
+    sales = [];
+    wsales = [];
+    const ccc = await db.collection("client").find({}).toArray();
+    ccc.forEach((element) => {
+      pos.push(element.pos * -1);
+      neg.push(element.neg * -1);
+      sales.push(element.sales);
+    });
+    var ii = 0;
+    var n = 0;
+    var p = 0;
+    var w = 0;
+    for (let index = 0; index < ccc.length; index++) {
+      if (ii < 7) {
+        n = n + neg[index];
+        p = p + pos[index];
+        w = w + sales[index];
+        ii++;
+      } else {
+        wpos.push(p);
+        wneg.push(n);
+        wsales.push(w);
+        n = 0;
+        p = 0;
+        w = 0;
+        n = n + neg[index];
+        p = p + pos[index];
+        w = w + sales[index];
+        ii = 0;
+        ii++;
+      }
+    }
+
+    /*
     sample = [];
     for (let index = 0; index < 10; index++) {
       sample.push(tweets[index]);
     }
+    */
 
     await res.send({
-      sample: sample,
+      //sample: sample,
+      wpos: wpos,
+      wneg: wneg,
+      pos: pos,
+      neg: neg,
+      sales: sales,
+      wsales: wsales,
       query: query,
       dates: dts,
       weekly: weekly,
