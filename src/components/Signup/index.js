@@ -56,7 +56,7 @@ const SignUp = () => {
   };
 
   if (redirect) {
-    return <Redirect to="/explore" />;
+    return <Redirect to="/datasets" />;
   }
 
   return (
