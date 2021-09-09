@@ -24,6 +24,7 @@ import {
   BsFillPersonFill,
 } from "react-icons/bs";
 import { FiActivity } from "react-icons/fi";
+import { BiCalendarAlt } from "react-icons/bi";
 import { AiOutlineStock } from "react-icons/ai";
 import img from "../../../../images/svg-12.svg";
 import Skeleton from "react-loading-skeleton";
@@ -136,23 +137,16 @@ const Main = () => {
     return day;
   };
 
-  const getRatio = () => {
-    var count = 0;
-    query.weeklyratio.forEach((element) => {
-      count = count + element;
-    });
-    if (count < 0) {
-      return "Pos/Neg Ratio is negatif";
-    } else {
-      return "Pos/Neg Ratio is positif";
-    }
+  const getDate = () => {
+    var i = query.daily.indexOf(Math.max(...query.daily));
+    return query.dates.at(i);
   };
 
   const getF = () => {
     if (query.positive_tweets < query.negative_tweets) {
-      return "The overall sentiment is negatif";
+      return "negatif";
     } else {
-      return "The overall sentiment is positif";
+      return "positif";
     }
   };
 
@@ -249,7 +243,7 @@ const Main = () => {
             <div>
               <div>{"SOCIAL ANALYSIS"}</div>
               <div style={{ "font-size": "18px" }}>
-                From {query.dates[0]} TO {query.dates.at(-1)}
+                From {query.dates.at(0)} TO {query.dates.at(-1)}
               </div>
             </div>
             {social === true ? (
@@ -261,7 +255,7 @@ const Main = () => {
           <DataContainer display={social}>
             <DoughnutContainer>
               <SubTitle style={{ "margin-bottom": "20px" }}>
-                Positif, Negatif and Neutural Distribution
+                {query.query.query} Positif, Negatif and Neutural Distribution
               </SubTitle>
               <Doughnut
                 data={{
@@ -300,7 +294,8 @@ const Main = () => {
                 }}
               >
                 <SubTitle style={{ "margin-bottom": "20px" }}>
-                  {checkedf ? "Weekly" : "Daily"} Line of Tweets Sentiment
+                  {query.query.query} {checkedf ? "Weekly" : "Daily"} Line of
+                  Tweets Sentiment
                 </SubTitle>
                 <Switch
                   checked={checkedf}
@@ -353,7 +348,7 @@ const Main = () => {
           <DataContainer display={social}>
             <DoughnutContainer>
               <SubTitle style={{ "margin-bottom": "20px" }}>
-                Tweets per Days of the Week
+                {query.query.query} Tweets per Days of the Week
               </SubTitle>
               <PolarArea
                 data={{
@@ -403,7 +398,7 @@ const Main = () => {
                 }}
               >
                 <SubTitle style={{ "margin-bottom": "20px" }}>
-                  Tweets per {checked ? "Week" : "Day"}
+                  {query.query.query} Tweets per {checked ? "Week" : "Day"}
                 </SubTitle>
                 <Switch
                   checked={checked}
@@ -448,7 +443,9 @@ const Main = () => {
           </DataContainer>
           <DataContainer display={social}>
             <InsightContainer>
-              <SubTitle style={{ "margin-bottom": "20px" }}>Insights</SubTitle>
+              <SubTitle style={{ "margin-bottom": "20px" }}>
+                {query.query.query} Social Insights
+              </SubTitle>
 
               <Wrapper>
                 <BsFillPersonFill
@@ -456,18 +453,24 @@ const Main = () => {
                   color="#096192"
                 ></BsFillPersonFill>
                 <Head>Overall feeling</Head>
-                <Filler>{getF()}</Filler>
+                <Filler>
+                  The overall sentiment about {query.query.query} is {getF()}
+                </Filler>
               </Wrapper>
               <Wrapper>
-                <AiOutlineStock size="50px" color="#096192"></AiOutlineStock>
-                <Head>Ratio</Head>
-                <Filler>{getRatio()}</Filler>
+                <BiCalendarAlt size="50px" color="#096192"></BiCalendarAlt>
+                <Head>Mark The Date</Head>
+                <Filler>
+                  {getDate()} is whene people talked the most about{" "}
+                  {query.query.query}
+                </Filler>
               </Wrapper>
               <Wrapper>
                 <FiActivity size="50px" color="#096192"></FiActivity>
-                <Head>Busiest day on twitter</Head>
+                <Head>Busiest day of the week on twitter</Head>
                 <Filler>
-                  {getDay()} is when people post the most about your search.
+                  {getDay()} is when people post the most about{" "}
+                  {query.query.query}.
                 </Filler>
               </Wrapper>
             </InsightContainer>
@@ -481,7 +484,8 @@ const Main = () => {
                 }}
               >
                 <SubTitle style={{ "margin-bottom": "20px" }}>
-                  {checkedff ? "Weekly" : "Daily"} Positif/Negatif Ratio
+                  {query.query.query} {checkedff ? "Weekly" : "Daily"}{" "}
+                  Positif/Negatif Ratio
                 </SubTitle>
                 <Switch
                   checked={checkedff}
@@ -621,8 +625,8 @@ const Main = () => {
                     }}
                   >
                     <SubTitle style={{ "margin-bottom": "20px" }}>
-                      {checked1 ? "Weekly" : "Daily"} Client's Sales by Tweets
-                      Sentiment
+                      {checked1 ? "Weekly" : "Daily"} Client's Sales by{" "}
+                      {query.query.query} Tweets Sentiment
                     </SubTitle>
                     <Switch
                       checked={checked1}
@@ -648,7 +652,7 @@ const Main = () => {
                           data: checked1 ? query.wsales : query.sales,
                           fill: false,
                           backgroundColor: "#34f",
-                          borderColor: "#3df",
+                          borderColor: "#FFB344",
                           yAxisID: "y-axis-1",
                         },
                         {
@@ -684,8 +688,8 @@ const Main = () => {
                     }}
                   >
                     <SubTitle style={{ "margin-bottom": "20px" }}>
-                      {checked ? "Weekly" : "Daily"} Client's Reviews VS Tweets
-                      Sentiment
+                      {checked ? "Weekly" : "Daily"} Client's Reviews VS{" "}
+                      {query.query.query} Tweets Sentiment
                     </SubTitle>
                     <Switch
                       checked={checked2}

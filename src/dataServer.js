@@ -239,9 +239,18 @@ app.get("/getquery", async (req, res) => {
     }
 
     weekdates = [];
-    for (let index = 0; index < weekly.length; index++) {
-      weekdates.push(index + 1);
+    var d = dts[0];
+    var k = 0;
+    for (let index = 0; index < dts.length; index++) {
+      if (k < 7) {
+        k++;
+      } else {
+        k = 0;
+        weekdates.push(d + " - " + dts[index]);
+        d = dts[index];
+      }
     }
+
     daily = [];
     for (let index = 0; index < ratnet.length; index++) {
       daily.push(ratnet[index] + ratneg[index] + ratpos[index]);
