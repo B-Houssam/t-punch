@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Title,
   LeftContainer,
@@ -15,8 +15,7 @@ import {
   Head,
   Filler,
   InsightContainer,
-  //TableWrapper,
-  //TweetsContainer,
+  PrintBtn,
 } from "./MainElements";
 import {
   BsFillCaretDownFill,
@@ -25,29 +24,15 @@ import {
 } from "react-icons/bs";
 import { FiActivity } from "react-icons/fi";
 import { BiCalendarAlt } from "react-icons/bi";
-import { AiOutlineStock } from "react-icons/ai";
+import { AiOutlineFilePdf } from "react-icons/ai";
 import img from "../../../../images/svg-12.svg";
 import Skeleton from "react-loading-skeleton";
 import { Doughnut, Line, Bar, PolarArea } from "react-chartjs-2";
 import Switch from "react-switch";
-/*
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-*/
+import { useReactToPrint } from "react-to-print";
 
 const Main = () => {
-  /*
-  const theme = createMuiTheme({
-    typography: {
-      fontFamily: ["Open Sans"].join(","),
-    },
-  });
-  */
-
+  const componentRef = useRef();
   const [file, setfile] = useState(null);
   const [query, setquery] = useState(null);
   const [social, setsocial] = useState(true);
@@ -57,6 +42,10 @@ const Main = () => {
   const [checkedff, setcheckedff] = useState(false);
   const [checked2, setchecked2] = useState(false);
   const [checked1, setchecked1] = useState(false);
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   const fetchData = async () => {
     // eslint-disable-next-line
@@ -173,7 +162,7 @@ const Main = () => {
   };
 
   return (
-    <>
+    <div ref={componentRef}>
       {query === null ? (
         <div
           style={{
@@ -235,7 +224,15 @@ const Main = () => {
               <MainText>
                 More than {query.query.total_tweets} analysed tweets.
               </MainText>
-              <AddBtn to="/newanalysis">Add new analysis</AddBtn>
+              <div style={{ display: "flex", "flex-direction": "row" }}>
+                <AddBtn to="/newanalysis">Add new analysis</AddBtn>
+                <PrintBtn onClick={handlePrint}>
+                  <AiOutlineFilePdf
+                    size="25px"
+                    color="#096192"
+                  ></AiOutlineFilePdf>
+                </PrintBtn>
+              </div>
             </RightContainer>
             <LeftContainer src={img}></LeftContainer>
           </OverviewContainer>
@@ -255,7 +252,8 @@ const Main = () => {
           <DataContainer display={social}>
             <DoughnutContainer>
               <SubTitle style={{ "margin-bottom": "20px" }}>
-                {query.query.query} Positif, Negatif and Neutural Distribution
+                {query.query.query} Positif, Negatif and Neutural Tweets
+                Distribution
               </SubTitle>
               <Doughnut
                 data={{
@@ -648,7 +646,7 @@ const Main = () => {
                       datasets: [
                         {
                           type: "line",
-                          label: "# of positif reviews",
+                          label: "# sales in $",
                           data: checked1 ? query.wsales : query.sales,
                           fill: false,
                           backgroundColor: "#34f",
@@ -688,7 +686,7 @@ const Main = () => {
                     }}
                   >
                     <SubTitle style={{ "margin-bottom": "20px" }}>
-                      {checked ? "Weekly" : "Daily"} Client's Reviews VS{" "}
+                      {checked2 ? "Weekly" : "Daily"} Client's Reviews VS{" "}
                       {query.query.query} Tweets Sentiment
                     </SubTitle>
                     <Switch
@@ -755,7 +753,7 @@ const Main = () => {
           )}
         </>
       )}
-    </>
+    </div>
   );
 };
 

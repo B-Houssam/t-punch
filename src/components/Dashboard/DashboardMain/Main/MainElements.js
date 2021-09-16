@@ -63,9 +63,34 @@ export const LeftContainer = styled.img`
   opacity: 0.3;
 `;
 
+export const PrintBtn = styled.div`
+  margin: 30px 0px 0px 10px;
+  border-radius: 5px;
+  background: #fff;
+  color: #096192;
+  white-space: nowrap;
+  font-size: 16px;
+  width: 70px;
+  height: 50px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  font-family: "Open Sans", sans-serif;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #053742;
+    color: #fff;
+  }
+`;
+
 export const AddBtn = styled(LinkR)`
   margin-top: 30px;
-  border-radius: 50px;
+  border-radius: 5px;
   background: #fff;
   color: #096192;
   white-space: nowrap;
@@ -79,7 +104,7 @@ export const AddBtn = styled(LinkR)`
   padding-right: 30px;
   display: flex;
   text-decoration: none;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
   font-family: "Open Sans", sans-serif;

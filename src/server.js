@@ -66,7 +66,6 @@ app.post("/public", async (req, res) => {
         });
         const data = fs.readFileSync("./src/dataset/clientData.JSON");
         const docs = JSON.parse(data.toString());
-        //console.log(docs);
         dbo.collection("client").insertMany(docs, function (err, result) {
           if (err) throw err;
           console.log("Inserted docs:", result.insertedCount);

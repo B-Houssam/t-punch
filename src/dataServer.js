@@ -78,6 +78,30 @@ app.get("/getanal", async (req, res) => {
   });
 });
 
+/*
+app.delete("/delanal", async (req, res) => {
+  try {
+    MongoClient.connect(url, function (err, db) {
+      if (err) throw err;
+      var dbo = db.db("tpunch");
+      //delete all before
+      dbo.collection("history").deleteMany({}, function (err, result) {
+        if (err) {
+          res.status(500);
+          res.send({ status: true });
+          console.log(err);
+        }
+        console.log(result);
+        res.status(200);
+        res.send({ status: false });
+      });
+    });
+  } catch (error) {
+    throw error;
+  }
+});
+*/
+
 app.get("/getclient", async (req, res) => {
   try {
     dailyposc = 0;
@@ -110,8 +134,22 @@ app.get("/getclient", async (req, res) => {
     var ii = 0;
     var n = 0;
     var p = 0;
-    var w = 0;
+    var w = ct[0].date;
     var ws = 0;
+    /*
+      weekdates = [];
+    var d = dts[0];
+    var k = 0;
+    for (let index = 0; index < dts.length; index++) {
+      if (k < 7) {
+        k++;
+      } else {
+        k = 0;
+        weekdates.push(d + " - " + dts[index]);
+        d = dts[index];
+      }
+    }
+    */
     for (let index = 0; index < ct.length; index++) {
       if (ii < 7) {
         n = n + neg[index];
@@ -119,10 +157,10 @@ app.get("/getclient", async (req, res) => {
         ws = ws + sales[index];
         ii++;
       } else {
-        w++;
         wpos.push(p);
         wneg.push(n);
-        weeks.push(w);
+        weeks.push(w + " - " + ct[index].date);
+        w = ct[index].date;
         wsales.push(ws);
         n = 0;
         p = 0;

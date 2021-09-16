@@ -1,5 +1,5 @@
 import styled from "styled-components";
-//import { Link as LinkR } from "react-router-dom";
+import { Link as LinkR } from "react-router-dom";
 
 export const Container = styled.div`
   display: flex;
@@ -8,6 +8,7 @@ export const Container = styled.div`
   align-items: center;
   background: #fff;
   margin-top: 20px;
+  hight: 100px;
 `;
 
 export const Wrapper = styled.div`
@@ -25,7 +26,7 @@ export const Wrapper = styled.div`
 `;
 
 export const TableWrapper = styled.div`
-  //height: 200px;
+  //height: 600px;
   width: 100%;
   padding-left: 100px;
   padding-right: 100px;
@@ -50,7 +51,9 @@ export const AddImage = styled.img`
   margin-top: 100px;
 `;
 
-export const Text = styled.span`
+
+
+export const Title = styled.span`
   font-family: "Oswald", sans-serif;
   //font-family: "Open Sans", sans-serif;
   font-weight: bold;
@@ -59,7 +62,7 @@ export const Text = styled.span`
   margin-bottom: 30px;
 `;
 
-
+/*
 export const Btn = styled(LinkR)`
   color: #fff;
   background: ${({ disabled }) => (disabled === false ? "grey" : "#228b22")};
@@ -79,7 +82,7 @@ export const Btn = styled(LinkR)`
     color: #fff;
   }
 `;
-
+*/
 export const DelBtn = styled(LinkR)`
   color: #fff;
   background: #b61919;
@@ -98,4 +101,3 @@ export const DelBtn = styled(LinkR)`
     color: #fff;
   }
 `;
-*/
