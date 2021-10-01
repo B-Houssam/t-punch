@@ -17,7 +17,7 @@ Under mongoDB:
 
 In the project directory, you can run:
 
-### nom install
+### `npm install`
 
 to install all required dependencies
 
@@ -30,8 +30,9 @@ Runs the app plus all express servers! (requires database as shown above)
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-You can accees to all diferent pages but with no data to show! 
-Available routes: 
+**You can accees to all diferent pages but with no data to show!**
+
+### `Available routes`
 
  <p align="center">
  <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/code-snapshot.png" alt="drawing" width="600px"/>
@@ -39,19 +40,19 @@ Available routes:
  
 ## Some Screen Shots:
 
-Home page:
+`Home page`
 
  <p align="center">
   <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/Screenshot%202021-10-01%20at%2011-54-00%20React%20App.png" alt="home screen" width="600px"/>
 </p>
 
-Login page:
+`Login page`
 
  <p align="center">
   <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/Screenshot%202021-10-01%20at%2011-54-15%20React%20App.png" alt="login screen" width="600px"/>
 </p>
 
-Dashboard:
+`Dashboard`
 
  <p align="center">
   <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/Screenshot%202021-10-01%20at%2011-54-46%20React%20App.png" alt="dashboard" width="800px"/>
