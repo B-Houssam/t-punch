@@ -50,7 +50,6 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" component={Home} exact />
-        {/* <Route path="/signin" component={SigninPage} exact /> */}
         <ReverseGuardRoute path="/signin" component={SignupPage} exact />
         <GuardRoute path="/main" component={DashMain} exact />
         <GuardRoute path="/datasets" component={DashD} exact />
