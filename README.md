@@ -1,47 +1,70 @@
-# Getting Started with Create React App
+# Tech-Punch, graduation project for master degree in software engineering
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The goal of this project was to manipulate data extracted from twitter to improve decision support system and the e-reputation for enterprises.
+This is the client side app, that will serve this purpose.
+
+## Database Schema
+
+Under mongoDB:
+
+ <p align="center">
+ <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/collection%20names.png" alt="drawing" width="200"/> <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/user%20schema.png" alt="drawing" width="500px"/> <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/tweets%20schema.png" alt="drawing" /> 
+  </p>
+ 
+ **Note that for the client's data is available in /src/dataset/clientData.JSON**
 
 ## Available Scripts
 
 In the project directory, you can run:
 
+### nom install
+
+to install all required dependencies
+
 ### `yarn dev`
 
-Runs the app plus all express servers!
+Runs the app plus all express servers! (requires database as shown above)
 
-### `yarn start`
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+You can accees to all diferent pages but with no data to show! 
+Available routes: 
 
-### `yarn test`
+ <p align="center">
+ <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/code-snapshot.png" alt="drawing" width="600px"/>
+  </p>
+ 
+## Some Screen Shots:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Home page:
 
-### `yarn build`
+ <p align="center">
+  <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/Screenshot%202021-10-01%20at%2011-54-00%20React%20App.png" alt="home screen" width="600px"/>
+</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Login page:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ <p align="center">
+  <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/Screenshot%202021-10-01%20at%2011-54-15%20React%20App.png" alt="login screen" width="600px"/>
+</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Dashboard:
 
-### `yarn eject`
+ <p align="center">
+  <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/Screenshot%202021-10-01%20at%2011-54-46%20React%20App.png" alt="dashboard" width="800px"/>
+</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<p align="center">
+  <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/Screenshot%202021-10-01%20at%2011-55-27%20React%20App.png" alt="dashboard" width="800px"/>
+</p>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p align="center">
+  <img src="https://github.com/B-Houssam/t-punch/blob/master/ScreenShots/Screenshot%202021-10-01%20at%2012-33-11%20React%20App.png" alt="dashboard" width="800px"/>
+</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
@@ -70,5 +93,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `yarn build` fails to minify
+
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
