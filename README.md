@@ -1,7 +1,7 @@
 # Tech-Punch, graduation project for master degree in software engineering
 
 The goal of this project was to manipulate data extracted from twitter to improve decision support system and the e-reputation for enterprises.
-This is the client side app, that will serve this purpose.
+This is the client side app, that will serve this purpose. using **ReactJs** for the front-end, **NodeJs** & **ExpressJs** for the back-end and api, as for the database used is an document oriented database with **mongoDB**.
 
 ## Database Schema
 
