@@ -30,7 +30,7 @@ Runs the app plus all express servers! (requires database as shown above)
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-**You can accees to all diferent pages but with no data to show!**
+**Routes are protected, need auth before accessing the dashboard "JWT verification"!**
 
 ### `Available routes`
 
