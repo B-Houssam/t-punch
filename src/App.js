@@ -51,13 +51,13 @@ function App() {
       <Switch>
         <Route path="/" component={Home} exact />
         <ReverseGuardRoute path="/signin" component={SignupPage} exact />
-        <GuardRoute path="/main" component={DashMain} exact />
-        <GuardRoute path="/datasets" component={DashD} exact />
-        <GuardRoute path="/account" component={DashA} exact />
-        <GuardRoute path="/explore" component={DashE} exact />
-        <GuardRoute path="/messages" component={DashMessages} exact />
-        <GuardRoute path="/newanalysis" component={DashN} exact />
-        <GuardRoute path="/history" component={DashH} exact />
+        <Route path="/main" component={DashMain} exact />
+        <Route path="/datasets" component={DashD} exact />
+        <Route path="/account" component={DashA} exact />
+        <Route path="/explore" component={DashE} exact />
+        <Route path="/messages" component={DashMessages} exact />
+        <Route path="/newanalysis" component={DashN} exact />
+        <Route path="/history" component={DashH} exact />
         <Route component={PageNotFound} />
       </Switch>
     </Router>
